@@ -23,5 +23,5 @@ export const THEME = {
   containerLg: 960,
   containerMd: 720,
   containerSm: 540,
-  containerXs: 'auto',
+  containerXs: '100%',
 };
