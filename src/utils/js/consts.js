@@ -1,9 +1,8 @@
 // External consts
-export const API_URL = "https://next.json-generator.com/api/json/get/E1EZuWdLr";
+export const API_URL = 'https://next.json-generator.com/api/json/get/E1EZuWdLr';
 
 // Style consts
 export const THEME = {
-
   // colors
   primaryRed: '#AB1725',
   primaryBlue: '#0F1C2D',
@@ -11,4 +10,4 @@ export const THEME = {
 
   // spacing
   paddingDefault: 16,
-}
+};
