@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import logo from './logo.svg';
-import './App.css';
+import styled, { keyframes }  from 'styled-components';
+import logo from './components/common/Logo/logo.svg';
+
+const rotateAnimation = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -15,7 +19,7 @@ const AppHeader = styled.header`
 `;
 
 const AppLogo = styled.img`
-  animation: App-logo-spin infinite 20s linear;
+  animation: ${rotateAnimation} infinite 20s linear;
   height: 80px;
 `;
 
