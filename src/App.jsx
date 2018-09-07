@@ -12,7 +12,7 @@ const AppWrapper = styled.div`
 `;
 
 const AppHeader = styled.header`
-  background-color: #222;
+  background-color: ${props => props.theme.primaryBlue};
   height: 150px;
   padding: 20px;
   color: white;
@@ -33,6 +33,7 @@ const AppIntro = styled.p`
 
 class App extends Component {
   render() {
+    console.log(this.props);
     return (
       <AppWrapper>
         <AppHeader>
