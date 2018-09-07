@@ -5,21 +5,30 @@ import Header from './components/Header/Header';
 
 const AppWrapper = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
-const AppIntro = styled.p`
-  font-size: large;
+const Bar = styled.div`
+  background: #3d3d3d;
+  padding: 30px;
+`;
+
+const Content = styled.div`
+  background: #eee;
+  flex-grow: 1;
 `;
 
 class App extends Component {
   render() {
-    console.log(this.props);
     return (
       <AppWrapper>
         <Header />
-        <AppIntro>
+        <Content>
           To get started, edit <code>src/App.js</code> and save to reload.
-        </AppIntro>
+        </Content>
+        <Bar />
       </AppWrapper>
     );
   }
