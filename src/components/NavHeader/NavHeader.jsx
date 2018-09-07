@@ -5,7 +5,8 @@ const StyledList = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
-  color: 
+  margin: 0;
+  padding: 0;
 `;
 
 const StyledItem = styled.li`

@@ -1,12 +1,8 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const StyledLogo = styled.svg`
-  height: 80px;
-`;
-
 const Logo = () => (
-    <StyledLogo width="132px" height="22px" viewBox="0 0 120 13" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <svg width="132px" height="22px" viewBox="0 0 120 13" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>
             <polygon id="path-1" points="0 18 132 18 132 0 0 0"></polygon>
         </defs>
@@ -32,7 +28,7 @@ const Logo = () => (
                 </g>
             </g>
         </g>
-    </StyledLogo> 
+    </svg> 
 )
 
 export default Logo;

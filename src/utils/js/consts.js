@@ -1,7 +1,7 @@
-// external consts
+// External consts
 export const API_URL = "https://next.json-generator.com/api/json/get/E1EZuWdLr";
 
-// style consts
+// Style consts
 export const THEME = {
 
   // colors
