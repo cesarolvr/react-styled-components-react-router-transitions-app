@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Header from './components/Header/Header';
+import Bar from './components/Bar/Bar';
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -10,13 +11,8 @@ const AppWrapper = styled.div`
   height: 100%;
 `;
 
-const Bar = styled.div`
-  background: #3d3d3d;
-  padding: 30px;
-`;
-
 const Content = styled.div`
-  background: #eee;
+  background: #fff;
   flex-grow: 1;
 `;
 

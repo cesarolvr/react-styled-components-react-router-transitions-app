@@ -13,7 +13,7 @@ const StyledHeader = styled.header`
   justify-content: space-between;
 `;
 
-const ContainerHeader = styled(Container)`
+const StyledHeaderContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
   @media (max-width: ${props => props.theme.breakMd}px) {
@@ -31,10 +31,10 @@ const ContainerHeader = styled(Container)`
 
 const Header = () => (
   <StyledHeader>
-    <ContainerHeader>
+    <StyledHeaderContainer>
       <Logo />
       <NavHeader />
-    </ContainerHeader>
+    </StyledHeaderContainer>
   </StyledHeader>
 );
 
