@@ -5,17 +5,20 @@ const StyledList = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
+  position: relative;
   margin: 0;
-  padding: 0;
+  padding: ${props => props.theme.paddingDefault * 2}px 0;
+  overflow-x: scroll;
 `;
 
 const StyledItem = styled.li`
   color: ${props => props.theme.primaryBlue};
+  border-bottom: ${props => props.active ? `2px solid ${props.theme.primaryRed}` : ''}
   font-size: 1rem;
   font-weight: 500;
   opacity: ${props => props.active ? `1` : '0.57'}
   margin: 0 ${props => props.theme.paddingDefault * 2}px;
-  border-bottom: ${props => props.active ? `2px solid ${props.theme.primaryRed}` : ''}
+  flex-shrink: 0;
 `;
 
 const NavHeader = () => {

@@ -10,4 +10,9 @@ export const THEME = {
 
   // spacing
   paddingDefault: 16,
+
+  // breakpoints
+  breakBigMobile: 768,
+  breakMediumMobile: 480,
+  breakSmallMobile: 400,
 };
