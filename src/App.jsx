@@ -1,48 +1,34 @@
 import React, { Component } from 'react';
-import styled, { keyframes }  from 'styled-components';
-import logo from './components/common/Logo/logo.svg';
+import styled from 'styled-components';
 
-const rotateAnimation = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`;
+import Header from './components/Header/Header';
 
 const AppWrapper = styled.div`
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
-const AppHeader = styled.header`
-  background-color: ${props => props.theme.primaryBlue};
-  height: 150px;
-  padding: 20px;
-  color: white;
+const Bar = styled.div`
+  background: #3d3d3d;
+  padding: 30px;
 `;
 
-const AppLogo = styled.img`
-  animation: ${rotateAnimation} infinite 20s linear;
-  height: 80px;
-`;
-
-const AppTitle = styled.h1`
-  font-size: 1.5em;
-`;
-
-const AppIntro = styled.p`
-  font-size: large;
+const Content = styled.div`
+  background: #eee;
+  flex-grow: 1;
 `;
 
 class App extends Component {
   render() {
-    console.log(this.props);
     return (
       <AppWrapper>
-        <AppHeader>
-          <AppLogo src={logo} alt="logo" />
-          <AppTitle>Welcome to React</AppTitle>
-        </AppHeader>
-        <AppIntro>
+        <Header />
+        <Content>
           To get started, edit <code>src/App.js</code> and save to reload.
-        </AppIntro>
+        </Content>
+        <Bar />
       </AppWrapper>
     );
   }
