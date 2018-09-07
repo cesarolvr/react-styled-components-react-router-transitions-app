@@ -12,7 +12,16 @@ export const THEME = {
   paddingDefault: 16,
 
   // breakpoints
-  breakBigMobile: 768,
-  breakMediumMobile: 480,
-  breakSmallMobile: 400,
+  breakXl: 1200,
+  breakLg: 992,
+  breakMd: 768,
+  breakSm: 576,
+  breakXs: 480,
+
+  // container sizes
+  containerXl: 1140,
+  containerLg: 960,
+  containerMd: 720,
+  containerSm: 540,
+  containerXs: 'auto',
 };

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Logo from '../common/Logo/Logo';
 import NavHeader from '../NavHeader/NavHeader';
+import Container from '../common/Container/Container';
 
 const StyledHeader = styled.header`
   color: white;
@@ -10,7 +11,12 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media (max-width: ${props => props.theme.breakBigMobile}px) {
+`;
+
+const ContainerHeader = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: ${props => props.theme.breakMd}px) {
     &:after{
       content: '';
       position: absolute;
@@ -25,8 +31,10 @@ const StyledHeader = styled.header`
 
 const Header = () => (
   <StyledHeader>
-    <Logo />
-    <NavHeader />
+    <ContainerHeader>
+      <Logo />
+      <NavHeader />
+    </ContainerHeader>
   </StyledHeader>
 );
 
