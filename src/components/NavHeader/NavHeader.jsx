@@ -8,6 +8,7 @@ const StyledList = styled.ul`
   position: relative;
   margin: 0;
   padding: ${props => props.theme.paddingDefault * 2}px 0;
+  margin-right: ${props => props.theme.paddingDefault * 3}px;
   overflow-x: scroll;
 `;
 
