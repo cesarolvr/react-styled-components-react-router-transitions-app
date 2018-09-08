@@ -7,6 +7,10 @@ import { getCars } from './actions';
 
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Engine from './components/Engine/Engine';
+import Color from './components/Color/Color';
+import Wheels from './components/Wheels/Wheels';
+import Checkout from './components/Checkout/Checkout';
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -27,24 +31,23 @@ class App extends Component {
     getCars()
       .then(res => {
         this.setState({
-          cars: res,
+          car: res,
         })
       })
       .catch(err => console.log(err));
   }
   render() {
-    const cars = idx(this.state, _ => _.cars) || [];
-    console.log('cars', cars);
+    const car = idx(this.state, _ => _.car) || {};
     return (
       <Router>
         <AppWrapper>
           <Header />
             <Content>
                 <Route exact path="/" component={() => <Home />} />
-                <Route path="/engine" component={ () => <h1>Engine</h1> } />
-                <Route path="/color" component={ () => <h1>Color</h1> } />
-                <Route path="/wheels" component={ () => <h1>Color</h1> } />
-                <Route path="/checkout" component={ () => <h1>Checkout</h1> } />
+                <Route path="/engine" component={ () => <Engine car={car} /> } />
+                <Route path="/color" component={ () => <Color car={car} /> } />
+                <Route path="/wheels" component={ () => <Wheels car={car} /> } />
+                <Route path="/checkout" component={ () => <Checkout car={car} /> } />
             </Content>
         </AppWrapper>
       </Router>

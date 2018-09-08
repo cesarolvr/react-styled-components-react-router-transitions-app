@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Container from '../common/Container/Container';
+import idx from 'idx';
 
 import dotRed from '../../utils/assets/dot-red.svg';
 // import dotBlue from '../../utils/assets/dot-blue.svg';
@@ -108,17 +110,23 @@ const BarPartItemImage = styled(BarPartItem)`
 
 // rodas
 const BarPartItemNext = styled(BarPartItem)`
-  flex-direction: row;
-  align-items: center;
-  ${BarPartItemTitle} {
-    font-size: 1.2rem;
-    margin-right: ${props => props.theme.paddingDefault}px;
-    text-transform: lowercase;
-    font-size: 1.4rem;
+  a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    color: ${props => props.theme.primaryBlue};
+    ${BarPartItemTitle} {
+      font-size: 1.2rem;
+      margin-right: ${props => props.theme.paddingDefault}px;
+      text-transform: lowercase;
+      font-size: 1.4rem;
+    }
   }
 `;
 
-const Bar = () => {
+const Bar = props => {
+  const next = idx(props, _ => _.next) || "";
   return (
     <StyledBar>
       <StyledBarContainer>
@@ -147,10 +155,12 @@ const Bar = () => {
         </BarPart>
         <BarPart>
           <BarPartItemNext>
-            <BarPartItemTitle>
-              Next
-            </BarPartItemTitle>
-            <img src={arrowNext} alt="Próxima etapa" />
+            <Link to={next}>
+              <BarPartItemTitle>
+                Next
+              </BarPartItemTitle>
+              <img src={arrowNext} alt="Próxima etapa" />
+            </Link>
           </BarPartItemNext>
         </BarPart>
       </StyledBarContainer>
