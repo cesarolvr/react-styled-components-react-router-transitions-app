@@ -1,23 +1,44 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Logo from '../common/Logo/Logo';
 import NavHeader from '../NavHeader/NavHeader';
+import Container from '../common/Container/Container';
 
 const StyledHeader = styled.header`
-  width: 100%;
+  color: white;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // padding: ${props => props.theme.paddingDefault * 2}px;
-  color: white;
+`;
+
+const StyledHeaderContainer = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    &:after{
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 60px;
+      background-image: linear-gradient(to right, transparent , white);
+    }
+  }
 `;
 
 const Header = () => (
   <StyledHeader>
-    <Logo />
-    <NavHeader />
+    <StyledHeaderContainer>
+      <Link to="/">
+        <Logo />
+      </Link>
+      <NavHeader />
+    </StyledHeaderContainer>
   </StyledHeader>
-)
+);
 
 export default Header;

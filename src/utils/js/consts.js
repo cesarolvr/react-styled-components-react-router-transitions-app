@@ -10,4 +10,18 @@ export const THEME = {
 
   // spacing
   paddingDefault: 16,
+
+  // breakpoints
+  breakXl: 1200,
+  breakLg: 992,
+  breakMd: 768,
+  breakSm: 576,
+  breakXs: 480,
+
+  // container sizes
+  containerXl: 1140,
+  containerLg: 960,
+  containerMd: 720,
+  containerSm: 540,
+  containerXs: '100%',
 };
