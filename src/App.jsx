@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { getCars } from './actions';
+
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 
@@ -21,6 +23,7 @@ const Content = styled.div`
 
 class App extends Component {
   render() {
+    getCars();
     return (
       <Router>
         <AppWrapper>
