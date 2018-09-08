@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledList = styled.ul`
   display: flex;
@@ -22,13 +23,19 @@ const StyledItem = styled.li`
   &:last-of-type{
     padding-right: ${props => props.theme.paddingDefault * 3}px;
   }
+  a {
+    color: black;
+    text-decoration: none;
+  }
 `;
 
 const NavHeader = () => {
   return (
     <StyledList>
       <StyledItem active>
-        Model R
+        <Link to="/">
+          Model R
+        </Link>
       </StyledItem>
       <StyledItem>Model IQ</StyledItem>
       <StyledItem>Model Mobi</StyledItem>

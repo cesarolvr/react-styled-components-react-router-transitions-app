@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Logo from '../common/Logo/Logo';
 import NavHeader from '../NavHeader/NavHeader';
@@ -32,7 +33,9 @@ const StyledHeaderContainer = styled(Container)`
 const Header = () => (
   <StyledHeader>
     <StyledHeaderContainer>
-      <Logo />
+      <Link to="/">
+        <Logo />
+      </Link>
       <NavHeader />
     </StyledHeaderContainer>
   </StyledHeader>

@@ -22,18 +22,18 @@ const Content = styled.div`
 class App extends Component {
   render() {
     return (
-      <AppWrapper>
-        <Header />
-        <Router>
-          <Content>
-              <Route exact path="/" component={() => <Home />} />
-              <Route path="/engine" component={ () => <h1>Engine</h1> } />
-              <Route path="/color" component={ () => <h1>Color</h1> } />
-              <Route path="/wheels" component={ () => <h1>Color</h1> } />
-              <Route path="/checkout" component={ () => <h1>Checkout</h1> } />
-          </Content>
-        </Router>
-      </AppWrapper>
+      <Router>
+        <AppWrapper>
+          <Header />
+            <Content>
+                <Route exact path="/" component={() => <Home />} />
+                <Route path="/engine" component={ () => <h1>Engine</h1> } />
+                <Route path="/color" component={ () => <h1>Color</h1> } />
+                <Route path="/wheels" component={ () => <h1>Color</h1> } />
+                <Route path="/checkout" component={ () => <h1>Checkout</h1> } />
+            </Content>
+        </AppWrapper>
+      </Router>
     );
   }
 }

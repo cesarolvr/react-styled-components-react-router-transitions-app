@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import Bar from '../Bar/Bar';
 import Container from '../common/Container/Container';
 
 import carImage from '../../utils/assets/car-home.png';
@@ -115,10 +114,6 @@ const HomeDockItem = styled.div`
   align-items: flex-start;
 `;
 
-const HomeDockItemSeconds = styled(HomeDockItem)``;
-const HomeDockItemMiles = styled(HomeDockItem)``;
-const HomeDockItemSpeed = styled(HomeDockItem)``;
-
 const HomeDockItemTitle = styled.h2`
   margin: 0;
   font-size: 2.5rem;
@@ -165,7 +160,7 @@ const Home = () => {
           </Box>
         </HomeBanner>
         <HomeDock>
-          <HomeDockItemSeconds>
+          <HomeDockItem>
             <HomeDockItemTitle>
               2.5
               <small>s</small>
@@ -173,8 +168,8 @@ const Home = () => {
             <HomeDockItemLabel>
               From 0 to 100
             </ HomeDockItemLabel>
-          </HomeDockItemSeconds>
-          <HomeDockItemMiles>
+          </HomeDockItem>
+          <HomeDockItem>
             <HomeDockItemTitle>
               420
               <small>mi</small>
@@ -182,8 +177,8 @@ const Home = () => {
             <HomeDockItemLabel>
               Miles range
             </ HomeDockItemLabel>
-          </HomeDockItemMiles>
-          <HomeDockItemSpeed>
+          </HomeDockItem>
+          <HomeDockItem>
             <HomeDockItemTitle>
               250
               <small>mp/h</small>
@@ -191,10 +186,9 @@ const Home = () => {
             <HomeDockItemLabel>
               Max speed
             </ HomeDockItemLabel>
-          </HomeDockItemSpeed>
+          </HomeDockItem>
         </HomeDock>
       </HomeContainer>
-      {/* <Bar /> */}
     </StyledHome>
   );
 };
