@@ -41,6 +41,13 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  verifyBar = () => {
+    const location = idx(this.props, _ => _.location) || {};
+    const { pathname } = location;
+    if (pathname !== '/checkout' && pathname !== '/') return 'opened';
+    return 'closed';
+  }
+
   // child matches will...
   bounceTransition = {
     // start in a transparent, upscaled state
@@ -92,7 +99,6 @@ class App extends Component {
     }
   }
 
-
   render() {
     const car = idx(this.state, _ => _.car) || {};
     const location = idx(this.props, _ => _.location) || {};
@@ -115,12 +121,7 @@ class App extends Component {
               <Route path="/checkout" component={ () => <Checkout car={car} /> } />
             </AnimatedSwitch>
           </Content>
-          {
-            pathname !== '/checkout' && pathname !== '/'
-            ?
-              <Bar next={this.getLinkNext(pathname)} />
-            : null
-          }
+          <Bar status={this.verifyBar()} next={this.getLinkNext(pathname)} />
         </AppWrapper>
     );
   }

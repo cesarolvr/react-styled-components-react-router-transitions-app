@@ -18,6 +18,9 @@ const StyledBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  bottom: ${props => props.status === 'opened' ? '0' : '-100px'};
+  transition: bottom .2s ease;
 `;
 
 const StyledBarContainer = styled(Container)`
@@ -127,8 +130,9 @@ const BarPartItemNext = styled(BarPartItem)`
 
 const Bar = props => {
   const next = idx(props, _ => _.next) || "";
+  const status = idx(props, _ => _.status) || "";
   return (
-    <StyledBar>
+    <StyledBar status={status}>
       <StyledBarContainer>
         <BarPart grow>
           <BarPartItemPrice>
