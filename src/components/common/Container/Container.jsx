@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
-  margin: auto;
+  margin: 0 auto;
   width: ${props => props.theme.containerXl}px;
   @media (max-width: ${props => props.theme.breakXl}px) {
     width: ${props => props.theme.containerLg}px;
