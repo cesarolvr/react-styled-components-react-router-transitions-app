@@ -16,9 +16,11 @@ const StyledBar = styled.div`
   background: white;
   box-shadow: 0px 0px 45px #dedede;
   display: flex;
+  overflow: hidden;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  height: ${props => props.status === 'opened' ? 'auto' : '0'};
   bottom: ${props => props.status === 'opened' ? '0' : '-100px'};
   transition: bottom .2s ease;
 `;
