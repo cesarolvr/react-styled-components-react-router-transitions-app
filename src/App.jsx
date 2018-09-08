@@ -97,8 +97,6 @@ class App extends Component {
     const car = idx(this.state, _ => _.car) || {};
     const location = idx(this.props, _ => _.location) || {};
     const { pathname } = location;
-    console.log(pathname);
-    
     return (
         <AppWrapper>
           <Header />
