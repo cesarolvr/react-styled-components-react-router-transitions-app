@@ -13,3 +13,35 @@ html, body {
   width: 100%;
   height: 100%;
 }
+
+/* react-router-transition */
+.switch-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.switch-wrapper > div > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+}
+
+
+/* remove this */
+.switch-wrapper h1 {
+  flex-grow: 1;
+}
