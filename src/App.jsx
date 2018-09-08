@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
+import idx from 'idx';
 
 import { getCars } from './actions';
 
@@ -24,10 +25,16 @@ const Content = styled.div`
 class App extends Component {
   componentDidMount(){
     getCars()
-      .then(res => console.log(res))
+      .then(res => {
+        this.setState({
+          cars: res,
+        })
+      })
       .catch(err => console.log(err));
   }
   render() {
+    const cars = idx(this.state, _ => _.cars) || [];
+    console.log('cars', cars);
     return (
       <Router>
         <AppWrapper>
