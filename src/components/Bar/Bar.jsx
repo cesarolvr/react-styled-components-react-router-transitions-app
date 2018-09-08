@@ -20,9 +20,9 @@ const StyledBar = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  height: ${props => props.status === 'opened' ? 'auto' : '0'};
+  max-height: ${props => props.status === 'opened' ? '200px' : '0'};
   bottom: ${props => props.status === 'opened' ? '0' : '-100px'};
-  transition: bottom .2s ease;
+  transition: all .2s ease;
 `;
 
 const StyledBarContainer = styled(Container)`
