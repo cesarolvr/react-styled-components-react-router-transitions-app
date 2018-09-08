@@ -90,7 +90,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   span {
     letter-spacing: .6rem;
-    color: black;
+    color: ${props => props.theme.primaryBlue};
     font-weight: 500;
     margin-right: ${props => props.theme.paddingDefault}px;
   }
