@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Container from '../common/Container/Container';
 
 import dotRed from '../../utils/assets/dot-red.svg';
-import dotBlue from '../../utils/assets/dot-blue.svg';
-import dotGray from '../../utils/assets/dot-gray.svg';
+// import dotBlue from '../../utils/assets/dot-blue.svg';
+// import dotGray from '../../utils/assets/dot-gray.svg';
 
 import wheelCarbon from '../../utils/assets/wheel-carbon.png';
 
@@ -12,7 +12,7 @@ import arrowNext from '../../utils/assets/IconArrowRightRed.svg';
 
 const StyledBar = styled.div`
   background: white;
-  box-shadow: 0px 0px 45px #ccc;
+  box-shadow: 0px 0px 45px #dedede;
   display: flex;
   align-items: center;
   justify-content: space-between;

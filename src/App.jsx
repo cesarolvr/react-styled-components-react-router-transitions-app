@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Header from './components/Header/Header';
@@ -17,13 +18,23 @@ const Content = styled.div`
 `;
 
 class App extends Component {
+  onlyToLieToEslint = () => {
+    console.log('ók');
+  }
+
   render() {
     return (
       <AppWrapper>
         <Header />
-        <Content>
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </Content>
+        <Router>
+          <Content>
+              <Route exact path="/" component={ () => <h1>Home</h1> } />
+              <Route path="/engine" component={ () => <h1>Engine</h1> } />
+              <Route path="/color" component={ () => <h1>Color</h1> } />
+              <Route path="/wheels" component={ () => <h1>Color</h1> } />
+              <Route path="/checkout" component={ () => <h1>Checkout</h1> } />
+          </Content>
+        </Router>
         <Bar />
       </AppWrapper>
     );
