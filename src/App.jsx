@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { getCars } from './actions';
@@ -22,8 +22,12 @@ const Content = styled.div`
 `;
 
 class App extends Component {
+  componentDidMount(){
+    getCars()
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
   render() {
-    getCars();
     return (
       <Router>
         <AppWrapper>
