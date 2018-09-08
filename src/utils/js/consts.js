@@ -8,6 +8,9 @@ export const THEME = {
   primaryBlue: '#0F1C2D',
   primaryGray: '#A8A8A8',
 
+  secondaryGray: '#F7F9FA',
+  tertiaryGray: '#5B5B5B',
+
   // spacing
   paddingDefault: 16,
 
