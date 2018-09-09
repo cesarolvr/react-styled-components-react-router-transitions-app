@@ -4,13 +4,11 @@ import idx from 'idx';
 
 import Container from '../common/Container/Container';
 
+import { getDot } from '../../utils/js/utils';
+
 import colorRed from '../../utils/assets/color-red.png';
 import colorBlue from '../../utils/assets/color-blue.png';
 import colorGray from '../../utils/assets/color-gray.png';
-
-import dotRed from '../../utils/assets/dot-red-no-shadow.svg';
-import dotBlue from '../../utils/assets/dot-blue-no-shadow.svg';
-import dotGray from '../../utils/assets/dot-gray-no-shadow.svg';
 
 const StyledColor = styled.div``;
 const ColorContainer = styled(Container)`
@@ -153,17 +151,6 @@ const ColorImageDescriptionBonus = styled.h4`
   }
 `;
 
-const getDot = id => {
-  switch(id) {
-    case 4:
-        return dotRed
-    case 5:
-      return dotBlue
-    default:
-      return dotGray
-  }
-}
-
 const Color = props => {
   const color = idx(props, _ => _.color) || {};
   const items = idx(props, _ => _.color.items) || [];
@@ -191,8 +178,8 @@ const Color = props => {
         </ ColorTitleWrapper>
         <ColorChoices>
           {
-            items.map(item => (
-              <ColorChoice red active key={item.id}>
+            items.map((item, index) => (
+              <ColorChoice red active={index === 0} key={item.id}>
                 <img src={getDot(item.id)} alt={item.label} />
               </ColorChoice>
             ))

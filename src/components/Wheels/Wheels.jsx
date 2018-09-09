@@ -2,12 +2,9 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import idx from 'idx';
 
-
 import Container from '../common/Container/Container';
 
-import wheelCarbon from '../../utils/assets/wheel-carbon.png';
-import wheelGrafitti from '../../utils/assets/wheel-grafitti.png';
-import wheelMetalic from '../../utils/assets/wheel-metalic.png';
+import { getWheel } from '../../utils/js/utils';
 
 const rotateAnimation = keyframes`
   from {
@@ -148,16 +145,6 @@ const WheelDescriptionBonus = styled.p`
   }
 `;
 
-const getWheel = id => {
-  switch(id) {
-    case 7:
-        return wheelMetalic
-    case 8:
-      return wheelGrafitti
-    default:
-      return wheelCarbon
-  }
-}
 
 const Wheels = props => {
   const items = idx(props, _ => _.wheels.items) || [];
@@ -167,8 +154,8 @@ const Wheels = props => {
         <WheelsTitle>Wheels</WheelsTitle>
         <WheelsContent>
           {
-            items.map(item => (
-              <Wheel active>
+            items.map((item, index) => (
+              <Wheel active={index === 0} key={item.id}>
                 <WheelImage>
                   <img src={getWheel(item.id)} alt=""/>
                 </WheelImage>
