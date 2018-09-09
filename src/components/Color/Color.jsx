@@ -5,12 +5,13 @@ import Container from '../common/Container/Container';
 
 import colorRed from '../../utils/assets/color-red.png';
 import colorBlue from '../../utils/assets/color-blue.png';
+import colorGray from '../../utils/assets/color-gray.png';
 
 import dotRed from '../../utils/assets/dot-red-no-shadow.svg';
 import dotBlue from '../../utils/assets/dot-blue-no-shadow.svg';
 import dotGray from '../../utils/assets/dot-gray-no-shadow.svg';
 
-const StyledEngine = styled.div``;
+const StyledColor = styled.div``;
 const ColorContainer = styled(Container)`
   display: grid;
   grid-template-columns: 50% 50%;
@@ -153,7 +154,7 @@ const ColorImageDescriptionBonus = styled.h4`
 
 const Color = props => {
   return (
-    <StyledEngine>
+    <StyledColor>
       <ColorContainer>
         <ColorImageWrapper>
           <ColorImage src={colorBlue} alt="" />
@@ -186,7 +187,7 @@ const Color = props => {
           </ColorChoice>
         </ColorChoices>
       </ColorContainer>
-    </StyledEngine>
+    </StyledColor>
   );
 };
 

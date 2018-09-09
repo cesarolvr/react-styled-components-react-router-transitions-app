@@ -106,7 +106,7 @@ const BarPartItemEngine = styled(BarPartItem)`
 // item com imagem (cor e roda)
 const BarPartItemImage = styled(BarPartItem)`
   img {
-    width: ${props => props.colorIcon ? '40px' : '50px'};
+    width: 40px;
   }
   @media (max-width: ${props => props.theme.breakMd}px) {
     display: none;
@@ -152,7 +152,7 @@ const Bar = props => {
               </span>
             </BarPartItemTitle>
           </BarPartItemEngine>
-          <BarPartItemImage colorIcon>
+          <BarPartItemImage>
             <img src={dotRed} alt="Cor do carro" />
           </BarPartItemImage>
           <BarPartItemImage>
