@@ -14,6 +14,10 @@ html, body {
   height: 100%;
 }
 
+img {
+  max-width: 100%;
+}
+
 /* react-router-transition */
 .switch-wrapper {
   position: relative;

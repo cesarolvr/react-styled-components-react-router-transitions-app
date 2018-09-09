@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { withRouter } from 'react-router'
 import { AnimatedSwitch, spring, AnimatedRoute } from 'react-router-transition';
 import styled from 'styled-components';
 import idx from 'idx';
@@ -12,6 +13,7 @@ import Engine from './components/Engine/Engine';
 import Color from './components/Color/Color';
 import Wheels from './components/Wheels/Wheels';
 import Checkout from './components/Checkout/Checkout';
+import Bar from './components/Bar/Bar';
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -37,6 +39,13 @@ class App extends Component {
         })
       })
       .catch(err => console.log(err));
+  }
+
+  verifyBar = () => {
+    const location = idx(this.props, _ => _.location) || {};
+    const { pathname } = location;
+    if (pathname !== '/checkout' && pathname !== '/') return 'opened';
+    return 'closed';
   }
 
   // child matches will...
@@ -75,11 +84,26 @@ class App extends Component {
     };
   }
 
+  getLinkNext = (path) => {
+    switch(path) {
+      case '/':
+          return '/engine'
+      case '/engine':
+        return '/color'
+      case '/color':
+        return '/wheels'
+      case '/wheels':
+        return '/checkout'
+      default:
+        return '/'
+    }
+  }
 
   render() {
     const car = idx(this.state, _ => _.car) || {};
+    const location = idx(this.props, _ => _.location) || {};
+    const { pathname } = location;
     return (
-      <Router>
         <AppWrapper>
           <Header />
           <Content>
@@ -90,17 +114,17 @@ class App extends Component {
               mapStyles={this.mapStyles}
               className="switch-wrapper"
             >
-                      <Route exact path="/" component={() => <Home />} />
-                      <Route path="/engine" component={ () => <Engine car={car} /> } />
-                      <Route path="/color" component={ () => <Color car={car} /> } />
-                      <Route path="/wheels" component={ () => <Wheels car={car} /> } />
-                      <Route path="/checkout" component={ () => <Checkout car={car} /> } />
+              <Route exact path="/" component={() => <Home />} />
+              <Route path="/engine" component={ () => <Engine car={car} /> } />
+              <Route path="/color" component={ () => <Color car={car} /> } />
+              <Route path="/wheels" component={ () => <Wheels car={car} /> } />
+              <Route path="/checkout" component={ () => <Checkout car={car} /> } />
             </AnimatedSwitch>
           </Content>
+          <Bar status={this.verifyBar()} next={this.getLinkNext(pathname)} />
         </AppWrapper>
-      </Router>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

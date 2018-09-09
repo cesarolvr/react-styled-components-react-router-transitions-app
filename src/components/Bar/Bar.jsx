@@ -16,8 +16,13 @@ const StyledBar = styled.div`
   background: white;
   box-shadow: 0px 0px 45px #dedede;
   display: flex;
+  overflow: hidden;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  max-height: ${props => props.status === 'opened' ? '200px' : '0'};
+  bottom: ${props => props.status === 'opened' ? '0' : '-100px'};
+  transition: all .2s ease;
 `;
 
 const StyledBarContainer = styled(Container)`
@@ -127,8 +132,9 @@ const BarPartItemNext = styled(BarPartItem)`
 
 const Bar = props => {
   const next = idx(props, _ => _.next) || "";
+  const status = idx(props, _ => _.status) || "";
   return (
-    <StyledBar>
+    <StyledBar status={status}>
       <StyledBarContainer>
         <BarPart grow>
           <BarPartItemPrice>
