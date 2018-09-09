@@ -5,6 +5,7 @@ import Container from '../common/Container/Container';
 
 import colorRed from '../../utils/assets/color-red.png';
 import colorBlue from '../../utils/assets/color-blue.png';
+import colorGray from '../../utils/assets/color-gray.png';
 
 import dotRed from '../../utils/assets/dot-red-no-shadow.svg';
 import dotBlue from '../../utils/assets/dot-blue-no-shadow.svg';
