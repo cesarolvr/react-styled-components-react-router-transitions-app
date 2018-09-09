@@ -3,29 +3,38 @@ import styled from 'styled-components';
 
 import Container from '../common/Container/Container';
 
-import colorImage from '../../utils/assets/color-red.png';
+import colorRed from '../../utils/assets/color-red.png';
+import colorBlue from '../../utils/assets/color-blue.png';
+
+import dotRed from '../../utils/assets/dot-red-no-shadow.svg';
+import dotBlue from '../../utils/assets/dot-blue-no-shadow.svg';
+import dotGray from '../../utils/assets/dot-gray-no-shadow.svg';
 
 const StyledEngine = styled.div``;
 const ColorContainer = styled(Container)`
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 25% 75%;
+  grid-template-rows: 20% 80%;
   height: 100%;
   @media (max-width: ${props => props.theme.breakLg}px) {
     grid-template-rows: 20% 80%;
   }
   @media (max-width: ${props => props.theme.breakMd}px) {
     grid-template-columns: 100%;
-    grid-template-rows: 10% 200px auto;
+    grid-template-rows: 30% 200px auto;
   }
 `;
 
-const ColorImage = styled.img`
+const ColorImageWrapper = styled.div`
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 3;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align-left;
   @media (max-width: ${props => props.theme.breakMd}px) {
     grid-column-start: 1;
     grid-column-end: 2;
@@ -36,6 +45,30 @@ const ColorImage = styled.img`
   }
 `;
 
+const ColorImage = styled.img`
+  margin-bottom: 10px;
+  position: relative;
+  left: ${props => props.theme.paddingDefault * -3}px;
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    max-height: 100%;
+    width: auto;
+    left: 0;
+    margin: auto;
+  }
+`;
+
+const ColorTitleWrapper = styled.div`
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin: 0;
+    padding: 0 ${props => props.theme.paddingDefault * 2}px;
+  }
+`;
+
+
 const ColorTitle = styled.h1`
   text-align: left;
   font-weight: 300;
@@ -45,29 +78,113 @@ const ColorTitle = styled.h1`
   @media (max-width: ${props => props.theme.breakLg}px) {
     font-size: 2rem;
   }
-  @media (max-width: ${props => props.theme.breakMd}px) {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    margin: 0;
-    padding: 0px ${props => props.theme.paddingDefault * 2}px;
-  }
 `;
 
 const ColorDescription = styled.p`
+  text-align: left;
+  color: ${props => props.theme.primaryGray}
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    padding: 0px;
+    margin-top: 0;
+  }
+`;
 
+const ColorChoices = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: ${props => props.theme.paddingDefault * 4}px 0;
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    padding: 0 ${props => props.theme.paddingDefault * 2}px;
+    justify-content: space-around;
+  }
+`;
+const ColorChoice = styled.div`
+  width: 48px;
+  height: 48px;
+  border: 10px solid ${props => props.active ? '#2E3948' : '#F2F2F2'};
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  margin-top: ${props => props.theme.paddingDefault * -2}px;
+  img{
+    transform: scale(1.05);
+  }
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    width: 35px;
+    height: 35px;
+  }
+`;
+
+const ColorImageDescription = styled.div`
+  margin: 0;
+  text-align: left;
+  padding-left: ${props => props.theme.paddingDefault * 2}px;
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    padding: 0;
+    margin: auto;
+    text-align: center;
+  }
+`;
+const ColorImageDescriptionName = styled.h3`
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.4rem;
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    font-size: 1rem;
+  }
+`;
+const ColorImageDescriptionBonus = styled.h4`
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: ${props => props.theme.primaryRed}
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    font-size: 1rem;
+  }
 `;
 
 const Color = props => {
   return (
     <StyledEngine>
       <ColorContainer>
-          <ColorImage src={colorImage} alt=""/>
-          <ColorTitle>Color</ColorTitle>
+        <ColorImageWrapper>
+          <ColorImage src={colorBlue} alt="" />
+          <ColorImageDescription>
+            <ColorImageDescriptionName>
+              Space Gray
+              </ColorImageDescriptionName>
+            <ColorImageDescriptionBonus>
+              + $1.200
+              </ColorImageDescriptionBonus>
+          </ColorImageDescription>
+        </ColorImageWrapper>
+        <ColorTitleWrapper>
+          <ColorTitle>
+            Color
+          </ColorTitle>
           <ColorDescription>
-            The 2019 Model R have 3 unique metalic color options. Each color was meticulously developed to look like something completely new to your eyes. 
-          </ColorDescription>
+            The 2019 Model R have 3 unique metalic color options. Each color was meticulously developed to look like something completely new to your eyes.
+            </ColorDescription>
+        </ ColorTitleWrapper>
+        <ColorChoices>
+          <ColorChoice red active>
+            <img src={dotRed} alt="" />
+          </ColorChoice>
+          <ColorChoice blue>
+            <img src={dotBlue} alt="" />
+          </ColorChoice>
+          <ColorChoice gray>
+            <img src={dotGray} alt="" />
+          </ColorChoice>
+        </ColorChoices>
       </ColorContainer>
     </StyledEngine>
   );

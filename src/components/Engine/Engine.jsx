@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Container from '../common/Container/Container';
 
 import engineImage from '../../utils/assets/engine-1.png';
+import engineImage2 from '../../utils/assets/engine-2.png';
 
 const StyledEngine = styled.div``;
 const EngineContainer = styled(Container)`

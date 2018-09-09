@@ -20,12 +20,14 @@ const StyledItem = styled.li`
   opacity: ${props => props.active ? `1` : '0.57'}
   margin: 0 ${props => props.theme.paddingDefault * 2}px;
   flex-shrink: 0;
-  &:last-of-type{
-    padding-right: ${props => props.theme.paddingDefault * 3}px;
-  }
   a {
     color: black;
     text-decoration: none;
+  }
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    &:last-of-type{
+      padding-right: ${props => props.theme.paddingDefault * 3}px;
+    }
   }
 `;
 
