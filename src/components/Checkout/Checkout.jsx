@@ -165,6 +165,8 @@ const ReportListItem = styled.li`
 `;
 
 const Checkout = props => {
+  const { selected } = props;
+  console.log(selected);
   return (
     <StyledCheckout>
       <CheckoutContainer>

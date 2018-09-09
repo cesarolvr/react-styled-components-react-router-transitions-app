@@ -148,6 +148,7 @@ const WheelDescriptionBonus = styled.p`
 
 const Wheels = props => {
   const items = idx(props, _ => _.wheels.items) || [];
+  
   return (
     <StyledWheels>
       <StyledWheelsContainer>

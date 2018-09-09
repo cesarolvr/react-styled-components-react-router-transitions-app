@@ -30,11 +30,37 @@ const Content = styled.div`
   height: 100%;
 `;
 
+const selectedOptions = {
+  price: 63000,
+  total: 71000,
+  name: 'Model R',
+  colorId: 4,
+  engine: {
+    id: 1,
+    image: "https://bit.ly/2wAFr4z",
+    kwh: 75,
+    price: 0,
+    range: 275,
+    type: "P",
+  },
+  wheels: {
+    id: 7,
+    image: "https://bit.ly/2Plx6sb",
+    label: '20" Silver Metalic',
+    price: 0,
+  }
+}
+
 class App extends Component {
-  componentDidMount(){
+  componentDidMount() {
+    this.setState({
+      ...this.state,
+      selected: selectedOptions,
+    })
     getCars()
       .then(res => {
         this.setState({
+          ...this.state,
           car: res,
         })
       })
@@ -66,7 +92,6 @@ class App extends Component {
       scale: this.bounce(1),
     },
   };
-
   // wrap the `spring` helper to use a bouncy config
   bounce(val) {
     return spring(val, {
@@ -74,7 +99,6 @@ class App extends Component {
       damping: 22,
     });
   }
-
   // we need to map the `scale` prop we define below
   // to the transform style property
   mapStyles(styles) {
@@ -85,9 +109,9 @@ class App extends Component {
   }
 
   getLinkNext = (path) => {
-    switch(path) {
+    switch (path) {
       case '/':
-          return '/engine'
+        return '/engine'
       case '/engine':
         return '/color'
       case '/color':
@@ -100,29 +124,30 @@ class App extends Component {
   }
 
   render() {
+    const selectedOptions = idx(this.state, _ => _.selected) || {};
     const car = idx(this.state, _ => _.car.data) || {};
     const location = idx(this.props, _ => _.location) || {};
     const { pathname } = location;
     return (
-        <AppWrapper>
-          <Header />
-          <Content>
-            <AnimatedSwitch
-              atEnter={this.bounceTransition.atEnter}
-              atLeave={this.bounceTransition.atLeave}
-              atActive={this.bounceTransition.atActive}
-              mapStyles={this.mapStyles}
-              className="switch-wrapper"
-            >
-              <Route exact path="/" component={() => <Home />} />
-              <Route path="/engine" component={ () => <Engine engine={car.engine} /> } />
-              <Route path="/color" component={ () => <Color color={car.color} /> } />
-              <Route path="/wheels" component={ () => <Wheels wheels={car.wheels} /> } />
-              <Route path="/checkout" component={ () => <Checkout car={car} /> } />
-            </AnimatedSwitch>
-          </Content>
-          <Bar status={this.verifyBar()} next={this.getLinkNext(pathname)} />
-        </AppWrapper>
+      <AppWrapper>
+        <Header />
+        <Content>
+          <AnimatedSwitch
+            atEnter={this.bounceTransition.atEnter}
+            atLeave={this.bounceTransition.atLeave}
+            atActive={this.bounceTransition.atActive}
+            mapStyles={this.mapStyles}
+            className="switch-wrapper"
+          >
+            <Route exact path="/" component={() => <Home />} />
+            <Route path="/engine" component={() => <Engine engine={car.engine} />} />
+            <Route path="/color" component={() => <Color color={car.color} />} />
+            <Route path="/wheels" component={() => <Wheels wheels={car.wheels} />} />
+            <Route path="/checkout" component={() => <Checkout selected={selectedOptions} />} />
+          </AnimatedSwitch>
+        </Content>
+        <Bar status={this.verifyBar()} next={this.getLinkNext(pathname)} />
+      </AppWrapper>
     );
   }
 }
