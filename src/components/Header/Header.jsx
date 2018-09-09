@@ -25,7 +25,8 @@ const StyledHeaderContainer = styled(Container)`
       top: 0;
       height: 100%;
       width: 60px;
-      background-image: linear-gradient(to right, transparent , white);
+      background-color: transparent;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, .6) , #fff);
     }
   }
 `;
