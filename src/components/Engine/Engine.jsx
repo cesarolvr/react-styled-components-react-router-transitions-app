@@ -2,30 +2,70 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Container from '../common/Container/Container';
-import Col from '../common/Col/Col';
 
 import engineImage from '../../utils/assets/engine-1.png';
 
 const StyledEngine = styled.div``;
 const EngineContainer = styled(Container)`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 25% 75%;
+  height: 100%;
+  @media (max-width: ${props => props.theme.breakLg}px) {
+    grid-template-rows: 20% 80%;
+  }
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 200px auto;
+  }
 `;
 
 const EngineImage = styled.img`
   height: 100%;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  margin: auto;
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    transform: rotate(90deg) scale(1.5);
+  }
 `;
 
 const EngineTitle = styled.h1`
   text-align: left;
   font-weight: 300;
   font-size: 3rem;
+  margin-bottom: 0;
   color: ${props => props.theme.primaryBlue}
+  @media (max-width: ${props => props.theme.breakLg}px) {
+    font-size: 2rem;
+  }
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin: 0;
+    padding: 0px ${props => props.theme.paddingDefault * 2}px;
+  }
 `;
 
 const EngineList = styled.ul`
   list-style: none;
   padding: 0;
+  margin: 0;
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    padding: 0px ${props => props.theme.paddingDefault * 2}px;
+  }
 `;
 
 const ItemCheck = styled.div`
@@ -45,6 +85,9 @@ const ItemInfo = styled.h4`
     font-weight: 500;
     color: ${props => props.theme.primaryBlue};
   }
+  @media (max-width: ${props => props.theme.breakLg}px) {
+    font-size: 1rem;
+  }
 `;
 
 const ItemInfoFeatured = styled(ItemInfo)`
@@ -55,6 +98,9 @@ const ItemInfoFeatured = styled(ItemInfo)`
   b{
     color: ${props => props.theme.primaryRed};
     margin-left: 5px;
+  }
+  @media (max-width: ${props => props.theme.breakLg}px) {
+    font-size: 1.3rem;
   }
 `;
 
@@ -81,16 +127,20 @@ const ListItem = styled.li`
       color: ${props => props.selected ? props.theme.primaryRed : props.theme.primaryGray};
     }
   }
+  @media (max-width: ${props => props.theme.breakLg}px) {
+    margin-bottom: ${props => props.theme.paddingDefault * 2}px;
+  }
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    margin-bottom: ${props => props.theme.paddingDefault}px;
+    padding: ${props => props.theme.paddingDefault}px;
+  }
 `;
 
 const Engine = props => {
   return (
     <StyledEngine>
       <EngineContainer>
-        <Col size="50%">
-          <EngineImage src={engineImage} alt="" />
-        </Col>
-        <Col size="50%">
+          <EngineImage src={engineImage} alt=""/>
           <EngineTitle>Engine</EngineTitle>
           <EngineList>
             <ListItem selected>
@@ -133,7 +183,6 @@ const Engine = props => {
               <ItemCheck />
             </ListItem>
           </EngineList>
-        </Col>
       </EngineContainer>
     </StyledEngine>
   );
