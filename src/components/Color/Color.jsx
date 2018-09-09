@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import idx from 'idx';
 
 import Container from '../common/Container/Container';
 
@@ -116,7 +117,7 @@ const ColorChoice = styled.div`
   position: relative;
   margin-top: ${props => props.theme.paddingDefault * -2}px;
   img{
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
   @media (max-width: ${props => props.theme.breakMd}px) {
     width: 35px;
@@ -152,7 +153,20 @@ const ColorImageDescriptionBonus = styled.h4`
   }
 `;
 
+const getDot = id => {
+  switch(id) {
+    case 4:
+        return dotRed
+    case 5:
+      return dotBlue
+    default:
+      return dotGray
+  }
+}
+
 const Color = props => {
+  const color = idx(props, _ => _.color) || {};
+  const items = idx(props, _ => _.color.items) || [];
   return (
     <StyledColor>
       <ColorContainer>
@@ -172,23 +186,29 @@ const Color = props => {
             Color
           </ColorTitle>
           <ColorDescription>
-            The 2019 Model R have 3 unique metalic color options. Each color was meticulously developed to look like something completely new to your eyes.
+            {color.description}
             </ColorDescription>
         </ ColorTitleWrapper>
         <ColorChoices>
-          <ColorChoice red active>
-            <img src={dotRed} alt="" />
-          </ColorChoice>
-          <ColorChoice blue>
+          {
+            items.map(item => (
+              <ColorChoice red active key={item.id}>
+                <img src={getDot(item.id)} alt={item.label} />
+              </ColorChoice>
+            ))
+          }
+          
+          {/* <ColorChoice blue>
             <img src={dotBlue} alt="" />
           </ColorChoice>
           <ColorChoice gray>
             <img src={dotGray} alt="" />
-          </ColorChoice>
+          </ColorChoice> */}
         </ColorChoices>
       </ColorContainer>
     </StyledColor>
   );
 };
+
 
 export default Color;

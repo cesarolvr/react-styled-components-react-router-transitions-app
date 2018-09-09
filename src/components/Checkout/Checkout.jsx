@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Container from '../common/Container/Container';
 
-import colorBlue from '../../utils/assets/color-blue.png';
+import finalRed from '../../utils/assets/final-red.png';
 
 import iconRebuild from '../../utils/assets/IconSpinnerRed.svg';
 
@@ -50,7 +50,7 @@ const CheckoutImageWrapper = styled.div`
 const CheckoutImage = styled.img`
   margin-bottom: 10px;
   position: relative;
-  left: ${props => props.theme.paddingDefault * -3}px;
+  max-width: 80%;
   @media (max-width: ${props => props.theme.breakMd}px) {
     max-height: 100%;
     width: auto;
@@ -169,7 +169,7 @@ const Checkout = props => {
     <StyledCheckout>
       <CheckoutContainer>
         <CheckoutImageWrapper>
-          <CheckoutImage src={colorBlue} alt="" />
+          <CheckoutImage src={finalRed} alt="" />
         </CheckoutImageWrapper>
         <CheckoutTitle>
           Your <strong>Model</strong> <b>R</b>

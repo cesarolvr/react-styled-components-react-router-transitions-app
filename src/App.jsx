@@ -100,7 +100,7 @@ class App extends Component {
   }
 
   render() {
-    const car = idx(this.state, _ => _.car) || {};
+    const car = idx(this.state, _ => _.car.data) || {};
     const location = idx(this.props, _ => _.location) || {};
     const { pathname } = location;
     return (
@@ -115,9 +115,9 @@ class App extends Component {
               className="switch-wrapper"
             >
               <Route exact path="/" component={() => <Home />} />
-              <Route path="/engine" component={ () => <Engine car={car} /> } />
-              <Route path="/color" component={ () => <Color car={car} /> } />
-              <Route path="/wheels" component={ () => <Wheels car={car} /> } />
+              <Route path="/engine" component={ () => <Engine engine={car.engine} /> } />
+              <Route path="/color" component={ () => <Color color={car.color} /> } />
+              <Route path="/wheels" component={ () => <Wheels wheels={car.wheels} /> } />
               <Route path="/checkout" component={ () => <Checkout car={car} /> } />
             </AnimatedSwitch>
           </Content>
