@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { withRouter } from 'react-router'
-import { AnimatedSwitch, spring, AnimatedRoute } from 'react-router-transition';
+import { AnimatedSwitch, spring } from 'react-router-transition';
 import styled from 'styled-components';
 import idx from 'idx';
 
