@@ -105,8 +105,8 @@ const Wheel = styled.div`
         }
       } 
   }
-  @media (max-width: ${props => props.theme.breakSm}px) {
-    width: 180px;
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    width: 120px;
     margin: 0px 20px;
     flex-shrink: 0;
     ${WheelDescription} {
