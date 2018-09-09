@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import idx from 'idx';
 
 import Container from '../common/Container/Container';
 
@@ -165,7 +166,7 @@ const ReportListItem = styled.li`
 `;
 
 const Checkout = props => {
-  const { selected } = props;
+  const selected = idx(props, _ => _.selected) || {};
   console.log(selected);
   return (
     <StyledCheckout>

@@ -7,6 +7,8 @@ import idx from 'idx';
 
 import { getCars } from './actions';
 
+import { getLinkNext, getStateBar } from './utils/js/utils';
+
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Engine from './components/Engine/Engine';
@@ -34,7 +36,6 @@ const selectedOptions = {
   price: 63000,
   total: 71000,
   name: 'Model R',
-  colorId: 4,
   engine: {
     id: 1,
     image: "https://bit.ly/2wAFr4z",
@@ -47,6 +48,13 @@ const selectedOptions = {
     id: 7,
     image: "https://bit.ly/2Plx6sb",
     label: '20" Silver Metalic',
+    price: 0,
+  },
+  color: {
+    hexadecimal: "#AB1725",
+    id: 4,
+    image: "https://bit.ly/2LHJ3WT",
+    label: "Metalic Vermilion",
     price: 0,
   }
 }
@@ -65,13 +73,6 @@ class App extends Component {
         })
       })
       .catch(err => console.log(err));
-  }
-
-  verifyBar = () => {
-    const location = idx(this.props, _ => _.location) || {};
-    const { pathname } = location;
-    if (pathname !== '/checkout' && pathname !== '/') return 'opened';
-    return 'closed';
   }
 
   // child matches will...
@@ -108,21 +109,6 @@ class App extends Component {
     };
   }
 
-  getLinkNext = (path) => {
-    switch (path) {
-      case '/':
-        return '/engine'
-      case '/engine':
-        return '/color'
-      case '/color':
-        return '/wheels'
-      case '/wheels':
-        return '/checkout'
-      default:
-        return '/'
-    }
-  }
-
   render() {
     const selectedOptions = idx(this.state, _ => _.selected) || {};
     const car = idx(this.state, _ => _.car.data) || {};
@@ -146,7 +132,7 @@ class App extends Component {
             <Route path="/checkout" component={() => <Checkout selected={selectedOptions} />} />
           </AnimatedSwitch>
         </Content>
-        <Bar status={this.verifyBar()} next={this.getLinkNext(pathname)} />
+        <Bar status={getStateBar(location)} next={getLinkNext(pathname)} />
       </AppWrapper>
     );
   }

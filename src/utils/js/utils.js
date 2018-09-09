@@ -28,5 +28,26 @@ const getWheel = id => {
   }
 }
 
+const getLinkNext = (path) => {
+  switch (path) {
+    case '/':
+      return '/engine'
+    case '/engine':
+      return '/color'
+    case '/color':
+      return '/wheels'
+    case '/wheels':
+      return '/checkout'
+    default:
+      return '/'
+  }
+}
 
-export { getDot, getWheel }
+const getStateBar = context => {
+  const { pathname } = context;
+  if (pathname !== '/checkout' && pathname !== '/') return 'opened';
+  return 'closed';
+}
+
+
+export { getDot, getWheel, getLinkNext, getStateBar }
