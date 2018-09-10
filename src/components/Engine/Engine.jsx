@@ -137,40 +137,55 @@ const ListItem = styled.li`
   }
 `;
 
-const Engine = props => {
-  const items = idx(props, _ => _.engine.items) || [];
-  const engine = idx(props, _ => _.selected.engine) || {};
-  const {
-    setEngine,
-  } = props;
+class Engine extends React.Component {
+  state = {
+    engineActived: 1,
+  }
 
-  return (
-    <StyledEngine>
-      <EngineContainer>
-          <EngineImage src={getEngine(engine.id)} alt=""/>
-          <EngineTitle>Engine</EngineTitle>
-          <EngineList>
-            {
-              items.map((item, index) => (
-                <ListItem onClick={() => setEngine(item)} selected={index === 0} key={item.id}>
-                  <ItemInfoFeatured>
-                    <span>{item.kwh}</span>
-                    <b>{item.type}</b>
-                  </ItemInfoFeatured>
-                  <ItemInfo>
-                    <span>{item.kwh}</span> kWh
-                  </ItemInfo>
-                  <ItemInfo>
-                    <span>{item.range}</span> miles range
-                  </ItemInfo>
-                  <ItemCheck />
-                </ListItem>
-              ))
-            }
-          </EngineList>
-      </EngineContainer>
-    </StyledEngine>
-  );
+  changeEngine = item => {
+    const {
+      setEngine
+    } = this.props;
+
+    this.setState({
+      engineActived: item.id
+    })
+
+    setEngine(item);
+  }
+
+  render() {
+    const items = idx(this.props, _ => _.engine.items) || [];
+    const engine = idx(this.props, _ => _.selected.engine) || {};
+  
+    return (
+      <StyledEngine>
+        <EngineContainer>
+            <EngineImage src={getEngine(engine.id)} alt=""/>
+            <EngineTitle>Engine</EngineTitle>
+            <EngineList>
+              {
+                items.map((item, index) => (
+                  <ListItem onClick={() => this.changeEngine(item)} selected={this.state.engineActived === item.id} key={item.id}>
+                    <ItemInfoFeatured>
+                      <span>{item.kwh}</span>
+                      <b>{item.type}</b>
+                    </ItemInfoFeatured>
+                    <ItemInfo>
+                      <span>{item.kwh}</span> kWh
+                    </ItemInfo>
+                    <ItemInfo>
+                      <span>{item.range}</span> miles range
+                    </ItemInfo>
+                    <ItemCheck />
+                  </ListItem>
+                ))
+              }
+            </EngineList>
+        </EngineContainer>
+      </StyledEngine>
+    );
+  }
 };
 
 export default Engine;
