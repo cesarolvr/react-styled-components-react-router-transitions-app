@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 import Container from '../common/Container/Container';
 import idx from 'idx';
 
-import dotRed from '../../utils/assets/dot-red.svg';
-// import dotBlue from '../../utils/assets/dot-blue.svg';
-// import dotGray from '../../utils/assets/dot-gray.svg';
+import { getDot, getWheel } from '../../utils/js/utils';
 
 import wheelCarbon from '../../utils/assets/wheel-carbon.png';
 
@@ -106,7 +104,7 @@ const BarPartItemEngine = styled(BarPartItem)`
 // item com imagem (cor e roda)
 const BarPartItemImage = styled(BarPartItem)`
   img {
-    width: 40px;
+    width: ${props => props.colorIcon ? '32px' : '35px'};
   }
   @media (max-width: ${props => props.theme.breakMd}px) {
     display: none;
@@ -133,30 +131,37 @@ const BarPartItemNext = styled(BarPartItem)`
 const Bar = props => {
   const next = idx(props, _ => _.next) || "";
   const status = idx(props, _ => _.status) || "";
+
+  const selected = idx(props, _ => _.selected) || {};
+  const engine = idx(props, _ => _.selected.engine) || {};
+  const color = idx(props, _ => _.selected.color) || {};
+  const wheels = idx(props, _ => _.selected.wheels) || {};
+
+  
   return (
     <StyledBar status={status}>
       <StyledBarContainer>
         <BarPart grow>
           <BarPartItemPrice>
             <BarPartItemTitle>Total</BarPartItemTitle>
-            <BarPartItemText>$63.000</BarPartItemText>
+            <BarPartItemText>${selected.total}</BarPartItemText>
           </BarPartItemPrice>
           <BarPartItemModel>
-            <BarPartItemTitle>Model R</BarPartItemTitle>
+            <BarPartItemTitle>{selected.name}</BarPartItemTitle>
           </BarPartItemModel>
           <BarPartItemEngine>
             <BarPartItemTitle>
-              75
+              {engine.kwh}
               <span>
-                P
+                {engine.type}
               </span>
             </BarPartItemTitle>
           </BarPartItemEngine>
-          <BarPartItemImage>
-            <img src={dotRed} alt="Cor do carro" />
+          <BarPartItemImage colorIcon>
+            <img src={getDot(color.id)} alt="Cor do carro" />
           </BarPartItemImage>
           <BarPartItemImage>
-            <img src={wheelCarbon} alt="Roda do carro" />
+            <img src={getWheel(wheels.id)} alt="Roda do carro" />
           </BarPartItemImage>
         </BarPart>
         <BarPart>

@@ -170,6 +170,10 @@ const Checkout = props => {
   const engine = idx(props, _ => _.selected.engine) || {};
   const wheels = idx(props, _ => _.selected.wheels) || {};
   const color = idx(props, _ => _.selected.color) || {};
+
+  const {
+    restart
+  } = props;
   return (
     <StyledCheckout>
       <CheckoutContainer>
@@ -222,7 +226,7 @@ const Checkout = props => {
               </ListItemPrice>
             </ReportListItem>
           </ReportList>
-          <LinkRebuild to="/">
+          <LinkRebuild to="/" onClick={() => restart()}>
             <span>Rebuild</span>
             <img src={iconRebuild} alt=""/>
           </LinkRebuild>

@@ -140,6 +140,10 @@ const ListItem = styled.li`
 
 const Engine = props => {
   const items = idx(props, _ => _.engine.items) || [];
+
+  const {
+    setEngine
+  } = props;
   
   return (
     <StyledEngine>
@@ -149,7 +153,7 @@ const Engine = props => {
           <EngineList>
             {
               items.map((item, index) => (
-                <ListItem selected={index === 0} key={item.id}>
+                <ListItem onClick={() => setEngine(item)} selected={index === 0} key={item.id}>
                   <ItemInfoFeatured>
                     <span>{item.kwh}</span>
                     <b>{item.type}</b>

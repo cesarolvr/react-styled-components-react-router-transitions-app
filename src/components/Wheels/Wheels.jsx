@@ -148,6 +148,10 @@ const WheelDescriptionBonus = styled.p`
 
 const Wheels = props => {
   const items = idx(props, _ => _.wheels.items) || [];
+
+  const {
+    setWheels
+  } = props;
   
   return (
     <StyledWheels>
@@ -156,7 +160,7 @@ const Wheels = props => {
         <WheelsContent>
           {
             items.map((item, index) => (
-              <Wheel active={index === 0} key={item.id}>
+              <Wheel active={index === 0} key={item.id} onClick={() => setWheels(item)}>
                 <WheelImage>
                   <img src={getWheel(item.id)} alt=""/>
                 </WheelImage>

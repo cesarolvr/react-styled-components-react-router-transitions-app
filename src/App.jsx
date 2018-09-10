@@ -34,7 +34,7 @@ const Content = styled.div`
 
 const selectedOptions = {
   price: 63000,
-  total: 71000,
+  total: 63000,
   name: 'Model R',
   engine: {
     id: 1,
@@ -109,11 +109,57 @@ class App extends Component {
     };
   }
 
+  setEngine = newEngine => {
+    const { engine, color, wheels, price } = this.state.selected;
+    this.setState({
+      ...this.state,
+      selected: {
+        ...this.state.selected,
+        engine: newEngine,
+        total: price + newEngine.price + color.price + wheels.price
+      }
+    })
+  }
+
+  setColor = newColor => {
+    const { engine, color, wheels, price } = this.state.selected;
+    this.setState({
+      ...this.state,
+      selected: {
+        ...this.state.selected,
+        color: newColor,
+        total: price + engine.price + newColor.price + wheels.price
+      }
+    })
+  }
+
+  setWheels = newWheels => {
+    const { engine, color, wheels, price } = this.state.selected;
+    this.setState({
+      ...this.state,
+      selected: {
+        ...this.state.selected,
+        wheels: newWheels,
+        total: price + engine.price + color.price + newWheels.price
+      }
+    })
+  }
+
+  restart = () => {
+    this.setState({
+      ...this.state,
+      selected: selectedOptions,
+    })
+  }
+
   render() {
     const selectedOptions = idx(this.state, _ => _.selected) || {};
     const car = idx(this.state, _ => _.car.data) || {};
     const location = idx(this.props, _ => _.location) || {};
     const { pathname } = location;
+
+    console.log(selectedOptions);
+    
     return (
       <AppWrapper>
         <Header />
@@ -126,10 +172,10 @@ class App extends Component {
             className="switch-wrapper"
           >
             <Route exact path="/" component={() => <Home />} />
-            <Route path="/engine" component={() => <Engine engine={car.engine} />} />
-            <Route path="/color" component={() => <Color color={car.color} />} />
-            <Route path="/wheels" component={() => <Wheels wheels={car.wheels} />} />
-            <Route path="/checkout" component={() => <Checkout selected={selectedOptions} />} />
+            <Route path="/engine" component={() => <Engine engine={car.engine} setEngine={this.setEngine} />} />
+            <Route path="/color" component={() => <Color color={car.color} setColor={this.setColor} />} />
+            <Route path="/wheels" component={() => <Wheels wheels={car.wheels} setWheels={this.setWheels}/>} />
+            <Route path="/checkout" component={() => <Checkout selected={selectedOptions} restart={this.restart} />} />
           </AnimatedSwitch>
         </Content>
         <Bar status={getStateBar(location)} next={getLinkNext(pathname)} selected={selectedOptions} />
