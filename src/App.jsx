@@ -132,7 +132,7 @@ class App extends Component {
             <Route path="/checkout" component={() => <Checkout selected={selectedOptions} />} />
           </AnimatedSwitch>
         </Content>
-        <Bar status={getStateBar(location)} next={getLinkNext(pathname)} />
+        <Bar status={getStateBar(location)} next={getLinkNext(pathname)} selected={selectedOptions} />
       </AppWrapper>
     );
   }

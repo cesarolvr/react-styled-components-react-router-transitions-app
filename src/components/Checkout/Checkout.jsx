@@ -170,7 +170,6 @@ const Checkout = props => {
   const engine = idx(props, _ => _.selected.engine) || {};
   const wheels = idx(props, _ => _.selected.wheels) || {};
   const color = idx(props, _ => _.selected.color) || {};
-  console.log(selected);
   return (
     <StyledCheckout>
       <CheckoutContainer>
