@@ -152,6 +152,12 @@ class Color extends Component {
     colorActived: 4,
   }
 
+  componentDidMount(){
+    const selectedColor = idx(this.props, _ => _.selected.color) || {};
+    this.setState({
+      colorActived: selectedColor.id
+    })
+  }
 
   changeColor = item => {
     const {

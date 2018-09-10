@@ -142,6 +142,13 @@ class Engine extends React.Component {
     engineActived: 1,
   }
 
+  componentDidMount(){
+    const engine = idx(this.props, _ => _.selected.engine) || {};
+    this.setState({
+      engineActived: engine.id
+    })
+  }
+
   changeEngine = item => {
     const {
       setEngine

@@ -171,7 +171,7 @@ class App extends Component {
             <Route exact path="/" render={() => <Home />} />
             <Route path="/engine" render={() => <Engine engine={car.engine} selected={selectedOptions} setEngine={this.setEngine} />} />
             <Route path="/color" render={() => <Color color={car.color} selected={selectedOptions} setColor={this.setColor} />} />
-            <Route path="/wheels" render={() => <Wheels wheels={car.wheels} setWheels={this.setWheels}/>} />
+            <Route path="/wheels" render={() => <Wheels wheels={car.wheels} selected={selectedOptions} setWheels={this.setWheels}/>} />
             <Route path="/checkout" render={() => <Checkout selected={selectedOptions} restart={this.restart} />} />
           </AnimatedSwitch>
         </Content>
