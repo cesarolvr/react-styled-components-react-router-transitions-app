@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import idx from 'idx';
 
@@ -147,56 +147,70 @@ const ColorImageDescriptionBonus = styled.h4`
   }
 `;
 
-const Color = props => {
-  const color = idx(props, _ => _.color) || {};
-  const items = idx(props, _ => _.color.items) || [];
-  const selectedColor = idx(props, _ => _.selected.color) || {};
-  const {
-    setColor
-  } = props;
-  
-  
-  return (
-    <StyledColor>
-      <ColorContainer>
-        <ColorImageWrapper>
-          <ColorImage src={getColor(selectedColor.id)} alt="" />
-          <ColorImageDescription>
-            <ColorImageDescriptionName>
-              {selectedColor.label}
-              </ColorImageDescriptionName>
-            <ColorImageDescriptionBonus>
-              + ${selectedColor.price}
-              </ColorImageDescriptionBonus>
-          </ColorImageDescription>
-        </ColorImageWrapper>
-        <ColorTitleWrapper>
-          <ColorTitle>
-            Color
-          </ColorTitle>
-          <ColorDescription>
-            {color.description}
-            </ColorDescription>
-        </ ColorTitleWrapper>
-        <ColorChoices>
-          {
-            items.map((item, index) => (
-              <ColorChoice onClick={() => setColor(item)} active={index === 0} key={item.id}>
-                <img src={getDot(item.id)} alt={item.label} />
-              </ColorChoice>
-            ))
-          }
-          
-          {/* <ColorChoice blue>
-            <img src={dotBlue} alt="" />
-          </ColorChoice>
-          <ColorChoice gray>
-            <img src={dotGray} alt="" />
-          </ColorChoice> */}
-        </ColorChoices>
-      </ColorContainer>
-    </StyledColor>
-  );
+class Color extends Component {
+  state = {
+    colorActived: 4,
+  }
+
+  componentDidMount(){
+    const selectedColor = idx(this.props, _ => _.selected.color) || {};
+    this.setState({
+      colorActived: selectedColor.id
+    })
+  }
+
+  changeColor = item => {
+    const {
+      setColor
+    } = this.props;
+
+    this.setState({
+      colorActived: item.id
+    })
+
+    setColor(item);
+  }
+
+  render() {
+    const color = idx(this.props, _ => _.color) || {};
+    const items = idx(this.props, _ => _.color.items) || [];
+    const selectedColor = idx(this.props, _ => _.selected.color) || {};
+    
+    return (
+      <StyledColor>
+        <ColorContainer>
+          <ColorImageWrapper>
+            <ColorImage src={getColor(selectedColor.id)} alt={selectedColor.label} />
+            <ColorImageDescription>
+              <ColorImageDescriptionName>
+                {selectedColor.label}
+                </ColorImageDescriptionName>
+              <ColorImageDescriptionBonus>
+                + ${selectedColor.price}
+                </ColorImageDescriptionBonus>
+            </ColorImageDescription>
+          </ColorImageWrapper>
+          <ColorTitleWrapper>
+            <ColorTitle>
+              Color
+            </ColorTitle>
+            <ColorDescription>
+              {color.description}
+              </ColorDescription>
+          </ ColorTitleWrapper>
+          <ColorChoices>
+            {
+              items.map(item => (
+                <ColorChoice onClick={() => this.changeColor(item)} active={this.state.colorActived === item.id} key={item.id}>
+                  <img src={getDot(item.id)} alt={item.label} />
+                </ColorChoice>
+              ))
+            }
+          </ColorChoices>
+        </ColorContainer>
+      </StyledColor>
+    );
+  }
 };
 
 

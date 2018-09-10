@@ -146,35 +146,54 @@ const WheelDescriptionBonus = styled.p`
 `;
 
 
-const Wheels = props => {
-  const items = idx(props, _ => _.wheels.items) || [];
+class Wheels extends React.PureComponent {
+  state = {
+    wheelsActived: 7,
+  }
+  componentDidMount(){
+    const selectedWheels = idx(this.props, _ => _.selected.wheels) || {};
+    this.setState({
+      wheelsActived: selectedWheels.id
+    })
+  }
 
-  const {
-    setWheels
-  } = props;
-  
-  return (
-    <StyledWheels>
-      <StyledWheelsContainer>
-        <WheelsTitle>Wheels</WheelsTitle>
-        <WheelsContent>
-          {
-            items.map((item, index) => (
-              <Wheel active={index === 0} key={item.id} onClick={() => setWheels(item)}>
-                <WheelImage>
-                  <img src={getWheel(item.id)} alt=""/>
-                </WheelImage>
-                <WheelDescription>
-                  <WheelDescriptionName>{item.label}</WheelDescriptionName>
-                  <WheelDescriptionBonus>{item.price === 0 ? 'Included' : `+ $${item.price}`}</WheelDescriptionBonus>
-                </WheelDescription>
-              </Wheel>
-            ))
-          }
-        </WheelsContent>
-      </StyledWheelsContainer>
-    </StyledWheels>
-  );
+  changeWheels = item => {
+    const {
+      setWheels
+    } = this.props;
+
+    this.setState({
+      wheelsActived: item.id
+    })
+
+    setWheels(item);
+  }
+
+  render() {
+    const items = idx(this.props, _ => _.wheels.items) || [];
+    return (
+      <StyledWheels>
+        <StyledWheelsContainer>
+          <WheelsTitle>Wheels</WheelsTitle>
+          <WheelsContent>
+            {
+              items.map(item => (
+                <Wheel active={this.state.wheelsActived === item.id} key={item.id} onClick={() => this.changeWheels(item)}>
+                  <WheelImage>
+                    <img src={getWheel(item.id)} alt=""/>
+                  </WheelImage>
+                  <WheelDescription>
+                    <WheelDescriptionName>{item.label}</WheelDescriptionName>
+                    <WheelDescriptionBonus>{item.price === 0 ? 'Included' : `+ $${item.price}`}</WheelDescriptionBonus>
+                  </WheelDescription>
+                </Wheel>
+              ))
+            }
+          </WheelsContent>
+        </StyledWheelsContainer>
+      </StyledWheels>
+    );
+  }
 };
 
 export default Wheels;

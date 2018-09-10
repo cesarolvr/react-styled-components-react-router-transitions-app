@@ -110,7 +110,7 @@ class App extends Component {
   }
 
   setEngine = newEngine => {
-    const { engine, color, wheels, price } = this.state.selected;
+    const { color, wheels, price } = this.state.selected;
     this.setState({
       ...this.state,
       selected: {
@@ -122,7 +122,7 @@ class App extends Component {
   }
 
   setColor = newColor => {
-    const { engine, color, wheels, price } = this.state.selected;
+    const { engine, wheels, price } = this.state.selected;
     this.setState({
       ...this.state,
       selected: {
@@ -134,7 +134,7 @@ class App extends Component {
   }
 
   setWheels = newWheels => {
-    const { engine, color, wheels, price } = this.state.selected;
+    const { engine, color, price } = this.state.selected;
     this.setState({
       ...this.state,
       selected: {
@@ -168,11 +168,11 @@ class App extends Component {
             mapStyles={this.mapStyles}
             className="switch-wrapper"
           >
-            <Route exact path="/" component={() => <Home />} />
-            <Route path="/engine" component={() => <Engine engine={car.engine} selected={selectedOptions} setEngine={this.setEngine} />} />
-            <Route path="/color" component={() => <Color color={car.color} selected={selectedOptions} setColor={this.setColor} />} />
-            <Route path="/wheels" component={() => <Wheels wheels={car.wheels} setWheels={this.setWheels}/>} />
-            <Route path="/checkout" component={() => <Checkout selected={selectedOptions} restart={this.restart} />} />
+            <Route exact path="/" render={() => <Home />} />
+            <Route path="/engine" render={() => <Engine engine={car.engine} selected={selectedOptions} setEngine={this.setEngine} />} />
+            <Route path="/color" render={() => <Color color={car.color} selected={selectedOptions} setColor={this.setColor} />} />
+            <Route path="/wheels" render={() => <Wheels wheels={car.wheels} selected={selectedOptions} setWheels={this.setWheels}/>} />
+            <Route path="/checkout" render={() => <Checkout selected={selectedOptions} restart={this.restart} />} />
           </AnimatedSwitch>
         </Content>
         <Bar status={getStateBar(location)} next={getLinkNext(pathname)} selected={selectedOptions} />
