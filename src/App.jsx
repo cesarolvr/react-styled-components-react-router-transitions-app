@@ -157,8 +157,6 @@ class App extends Component {
     const car = idx(this.state, _ => _.car.data) || {};
     const location = idx(this.props, _ => _.location) || {};
     const { pathname } = location;
-
-    console.log(selectedOptions);
     
     return (
       <AppWrapper>
@@ -172,8 +170,8 @@ class App extends Component {
             className="switch-wrapper"
           >
             <Route exact path="/" component={() => <Home />} />
-            <Route path="/engine" component={() => <Engine engine={car.engine} setEngine={this.setEngine} />} />
-            <Route path="/color" component={() => <Color color={car.color} setColor={this.setColor} />} />
+            <Route path="/engine" component={() => <Engine engine={car.engine} selected={selectedOptions} setEngine={this.setEngine} />} />
+            <Route path="/color" component={() => <Color color={car.color} selected={selectedOptions} setColor={this.setColor} />} />
             <Route path="/wheels" component={() => <Wheels wheels={car.wheels} setWheels={this.setWheels}/>} />
             <Route path="/checkout" component={() => <Checkout selected={selectedOptions} restart={this.restart} />} />
           </AnimatedSwitch>

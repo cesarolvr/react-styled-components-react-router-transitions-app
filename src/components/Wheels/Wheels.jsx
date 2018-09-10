@@ -166,7 +166,7 @@ const Wheels = props => {
                 </WheelImage>
                 <WheelDescription>
                   <WheelDescriptionName>{item.label}</WheelDescriptionName>
-                  <WheelDescriptionBonus>{item.price === 0 ? 'Included' : item.price}</WheelDescriptionBonus>
+                  <WheelDescriptionBonus>{item.price === 0 ? 'Included' : `+ $${item.price}`}</WheelDescriptionBonus>
                 </WheelDescription>
               </Wheel>
             ))
