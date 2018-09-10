@@ -13,6 +13,10 @@ import colorRed from '../../utils/assets/color-red.png';
 import colorBlue from '../../utils/assets/color-blue.png';
 import colorGray from '../../utils/assets/color-gray.png';
 
+import finalRed from '../../utils/assets/final-red.png';
+import finalBlue from '../../utils/assets/final-blue.png';
+import finalGray from '../../utils/assets/final-gray.png';
+
 const getDot = id => {
   switch(id) {
     case 4:
@@ -70,6 +74,17 @@ const getColor = id => {
   }
 }
 
+const getFinalCar = id => {
+  switch(id) {
+    case 4:
+        return finalRed
+    case 5:
+        return finalBlue
+    default:
+      return finalGray
+  }
+}
+
 const getStateBar = context => {
   const { pathname } = context;
   if (pathname !== '/checkout' && pathname !== '/') return 'opened';
@@ -77,4 +92,4 @@ const getStateBar = context => {
 }
 
 
-export { getDot, getWheel, getLinkNext, getStateBar, getEngine, getColor }
+export { getDot, getWheel, getLinkNext, getStateBar, getEngine, getColor, getFinalCar }
