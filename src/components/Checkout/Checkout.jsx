@@ -167,6 +167,9 @@ const ReportListItem = styled.li`
 
 const Checkout = props => {
   const selected = idx(props, _ => _.selected) || {};
+  const engine = idx(props, _ => _.selected.engine) || {};
+  const wheels = idx(props, _ => _.selected.wheels) || {};
+  const color = idx(props, _ => _.selected.color) || {};
   console.log(selected);
   return (
     <StyledCheckout>
@@ -184,39 +187,39 @@ const Checkout = props => {
                 Starting price
               </ListItemName>
               <ListItemPrice>
-                $63.000
+                ${selected.price}
               </ListItemPrice>
             </ReportListItem>
             <ReportListItem>
               <ListItemName>
-                Starting price
+                {engine.kwh} {engine.p} - {engine.kwh + ` kWH`} - {engine.range + ` Miles range`}
               </ListItemName>
               <ListItemPrice>
-                $63.000
+                {engine.price === 0 ? 'Included' : `+ $${engine.price}`}
               </ListItemPrice>
             </ReportListItem>
             <ReportListItem>
               <ListItemName>
-                Starting price
+                {color.label}
               </ListItemName>
               <ListItemPrice>
-                $63.000
+                {color.price === 0 ? 'Included' : `+ $${color.price}`}
               </ListItemPrice>
             </ReportListItem>
             <ReportListItem>
               <ListItemName>
-                Starting price
+                {wheels.label}
               </ListItemName>
               <ListItemPrice>
-                $63.000
+                {wheels.price === 0 ? 'Included' : `+ $${wheels.price}`}
               </ListItemPrice>
             </ReportListItem>
             <ReportListItem>
               <ListItemName>
-                Starting price
+                Final price
               </ListItemName>
               <ListItemPrice>
-                $63.000
+                ${selected.total}
               </ListItemPrice>
             </ReportListItem>
           </ReportList>
