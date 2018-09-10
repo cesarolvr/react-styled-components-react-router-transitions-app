@@ -171,8 +171,6 @@ class Wheels extends React.PureComponent {
 
   render() {
     const items = idx(this.props, _ => _.wheels.items) || [];
-    console.log(this.state);
-    
     return (
       <StyledWheels>
         <StyledWheelsContainer>
