@@ -56,7 +56,9 @@ const getLinkNext = (path) => {
 
 const getEngine = id => {
   switch(id) {
-    case 2 || 3:
+    case 2:
+        return engineImage2
+    case 3:
         return engineImage2
     default:
       return engineImage
