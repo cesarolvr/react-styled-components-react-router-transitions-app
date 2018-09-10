@@ -4,11 +4,7 @@ import idx from 'idx';
 
 import Container from '../common/Container/Container';
 
-import { getDot } from '../../utils/js/utils';
-
-import colorRed from '../../utils/assets/color-red.png';
-import colorBlue from '../../utils/assets/color-blue.png';
-import colorGray from '../../utils/assets/color-gray.png';
+import { getDot, getColor } from '../../utils/js/utils';
 
 const StyledColor = styled.div``;
 const ColorContainer = styled(Container)`
@@ -154,20 +150,22 @@ const ColorImageDescriptionBonus = styled.h4`
 const Color = props => {
   const color = idx(props, _ => _.color) || {};
   const items = idx(props, _ => _.color.items) || [];
+  const selectedColor = idx(props, _ => _.selected.color) || {};
   const {
     setColor
   } = props;
+  
   return (
     <StyledColor>
       <ColorContainer>
         <ColorImageWrapper>
-          <ColorImage src={colorBlue} alt="" />
+          <ColorImage src={getColor(selectedColor.id)} alt="" />
           <ColorImageDescription>
             <ColorImageDescriptionName>
               Space Gray
               </ColorImageDescriptionName>
             <ColorImageDescriptionBonus>
-              + $1.200
+              + ${selectedColor.price}
               </ColorImageDescriptionBonus>
           </ColorImageDescription>
         </ColorImageWrapper>

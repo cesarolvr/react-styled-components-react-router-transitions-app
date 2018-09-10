@@ -4,8 +4,7 @@ import idx from 'idx';
 
 import Container from '../common/Container/Container';
 
-import engineImage from '../../utils/assets/engine-1.png';
-import engineImage2 from '../../utils/assets/engine-2.png';
+import { getEngine } from '../../utils/js/utils';
 
 const StyledEngine = styled.div``;
 const EngineContainer = styled(Container)`
@@ -140,15 +139,15 @@ const ListItem = styled.li`
 
 const Engine = props => {
   const items = idx(props, _ => _.engine.items) || [];
-
+  const engine = idx(props, _ => _.selected.engine) || {};
   const {
-    setEngine
+    setEngine,
   } = props;
-  
+
   return (
     <StyledEngine>
       <EngineContainer>
-          <EngineImage src={engineImage} alt=""/>
+          <EngineImage src={getEngine(engine.id)} alt=""/>
           <EngineTitle>Engine</EngineTitle>
           <EngineList>
             {
