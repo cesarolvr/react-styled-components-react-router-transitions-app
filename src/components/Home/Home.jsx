@@ -66,6 +66,12 @@ const BoxSubTitle = styled.h2`
     line-height: .8em;
     margin: 0 0 0 -5px;
   }
+  @media (max-width: ${props => props.theme.breakXs}px) {
+    font-size: 4.5rem;
+    strong{
+      margin-left: -10px;
+    }
+  }
 `;
 
 const BoxImageCar = styled.img`

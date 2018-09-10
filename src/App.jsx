@@ -7,6 +7,8 @@ import idx from 'idx';
 
 import { getCars } from './actions';
 
+import { getLinkNext, getStateBar } from './utils/js/utils';
+
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Engine from './components/Engine/Engine';
@@ -30,22 +32,47 @@ const Content = styled.div`
   height: 100%;
 `;
 
+const selectedOptions = {
+  price: 63000,
+  total: 71000,
+  name: 'Model R',
+  engine: {
+    id: 1,
+    image: "https://bit.ly/2wAFr4z",
+    kwh: 75,
+    price: 0,
+    range: 275,
+    type: "P",
+  },
+  wheels: {
+    id: 7,
+    image: "https://bit.ly/2Plx6sb",
+    label: '20" Silver Metalic',
+    price: 0,
+  },
+  color: {
+    hexadecimal: "#AB1725",
+    id: 4,
+    image: "https://bit.ly/2LHJ3WT",
+    label: "Metalic Vermilion",
+    price: 0,
+  }
+}
+
 class App extends Component {
-  componentDidMount(){
+  componentDidMount() {
+    this.setState({
+      ...this.state,
+      selected: selectedOptions,
+    })
     getCars()
       .then(res => {
         this.setState({
+          ...this.state,
           car: res,
         })
       })
       .catch(err => console.log(err));
-  }
-
-  verifyBar = () => {
-    const location = idx(this.props, _ => _.location) || {};
-    const { pathname } = location;
-    if (pathname !== '/checkout' && pathname !== '/') return 'opened';
-    return 'closed';
   }
 
   // child matches will...
@@ -66,7 +93,6 @@ class App extends Component {
       scale: this.bounce(1),
     },
   };
-
   // wrap the `spring` helper to use a bouncy config
   bounce(val) {
     return spring(val, {
@@ -74,7 +100,6 @@ class App extends Component {
       damping: 22,
     });
   }
-
   // we need to map the `scale` prop we define below
   // to the transform style property
   mapStyles(styles) {
@@ -84,45 +109,31 @@ class App extends Component {
     };
   }
 
-  getLinkNext = (path) => {
-    switch(path) {
-      case '/':
-          return '/engine'
-      case '/engine':
-        return '/color'
-      case '/color':
-        return '/wheels'
-      case '/wheels':
-        return '/checkout'
-      default:
-        return '/'
-    }
-  }
-
   render() {
-    const car = idx(this.state, _ => _.car) || {};
+    const selectedOptions = idx(this.state, _ => _.selected) || {};
+    const car = idx(this.state, _ => _.car.data) || {};
     const location = idx(this.props, _ => _.location) || {};
     const { pathname } = location;
     return (
-        <AppWrapper>
-          <Header />
-          <Content>
-            <AnimatedSwitch
-              atEnter={this.bounceTransition.atEnter}
-              atLeave={this.bounceTransition.atLeave}
-              atActive={this.bounceTransition.atActive}
-              mapStyles={this.mapStyles}
-              className="switch-wrapper"
-            >
-              <Route exact path="/" component={() => <Home />} />
-              <Route path="/engine" component={ () => <Engine car={car} /> } />
-              <Route path="/color" component={ () => <Color car={car} /> } />
-              <Route path="/wheels" component={ () => <Wheels car={car} /> } />
-              <Route path="/checkout" component={ () => <Checkout car={car} /> } />
-            </AnimatedSwitch>
-          </Content>
-          <Bar status={this.verifyBar()} next={this.getLinkNext(pathname)} />
-        </AppWrapper>
+      <AppWrapper>
+        <Header />
+        <Content>
+          <AnimatedSwitch
+            atEnter={this.bounceTransition.atEnter}
+            atLeave={this.bounceTransition.atLeave}
+            atActive={this.bounceTransition.atActive}
+            mapStyles={this.mapStyles}
+            className="switch-wrapper"
+          >
+            <Route exact path="/" component={() => <Home />} />
+            <Route path="/engine" component={() => <Engine engine={car.engine} />} />
+            <Route path="/color" component={() => <Color color={car.color} />} />
+            <Route path="/wheels" component={() => <Wheels wheels={car.wheels} />} />
+            <Route path="/checkout" component={() => <Checkout selected={selectedOptions} />} />
+          </AnimatedSwitch>
+        </Content>
+        <Bar status={getStateBar(location)} next={getLinkNext(pathname)} selected={selectedOptions} />
+      </AppWrapper>
     );
   }
 }

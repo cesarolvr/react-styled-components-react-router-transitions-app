@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import idx from 'idx';
 
 import Container from '../common/Container/Container';
 
@@ -138,51 +139,31 @@ const ListItem = styled.li`
 `;
 
 const Engine = props => {
+  const items = idx(props, _ => _.engine.items) || [];
+  
   return (
     <StyledEngine>
       <EngineContainer>
           <EngineImage src={engineImage} alt=""/>
           <EngineTitle>Engine</EngineTitle>
           <EngineList>
-            <ListItem selected>
-              <ItemInfoFeatured>
-                <span>75</span>
-                <b>P</b>
-              </ItemInfoFeatured>
-              <ItemInfo>
-                <span>75</span> kWh
-              </ItemInfo>
-              <ItemInfo>
-                <span>275</span> miles range
-              </ItemInfo>
-              <ItemCheck />
-            </ListItem>
-            <ListItem>
-              <ItemInfoFeatured>
-                <span>75</span>
-                <b>P</b>
-              </ItemInfoFeatured>
-              <ItemInfo>
-                <span>75</span> kWh
-              </ItemInfo>
-              <ItemInfo>
-                <span>275</span> miles range
-              </ItemInfo>
-              <ItemCheck />
-            </ListItem>
-            <ListItem>
-              <ItemInfoFeatured>
-                <span>75</span>
-                <b>P</b>
-              </ItemInfoFeatured>
-              <ItemInfo>
-                <span>75</span> kWh
-              </ItemInfo>
-              <ItemInfo>
-                <span>275</span> miles range
-              </ItemInfo>
-              <ItemCheck />
-            </ListItem>
+            {
+              items.map((item, index) => (
+                <ListItem selected={index === 0} key={item.id}>
+                  <ItemInfoFeatured>
+                    <span>{item.kwh}</span>
+                    <b>{item.type}</b>
+                  </ItemInfoFeatured>
+                  <ItemInfo>
+                    <span>{item.kwh}</span> kWh
+                  </ItemInfo>
+                  <ItemInfo>
+                    <span>{item.range}</span> miles range
+                  </ItemInfo>
+                  <ItemCheck />
+                </ListItem>
+              ))
+            }
           </EngineList>
       </EngineContainer>
     </StyledEngine>

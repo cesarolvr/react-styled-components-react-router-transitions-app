@@ -1,11 +1,10 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import idx from 'idx';
 
 import Container from '../common/Container/Container';
 
-import wheelCarbon from '../../utils/assets/wheel-carbon.png';
-import wheelGrafitti from '../../utils/assets/wheel-grafitti.png';
-import wheelMetalic from '../../utils/assets/wheel-metalic.png';
+import { getWheel } from '../../utils/js/utils';
 
 const rotateAnimation = keyframes`
   from {
@@ -57,11 +56,13 @@ const WheelsContent = styled.div`
 const WheelDescription = styled.div`
   opacity: 0;
   transition: opacity .2s ease;
+  min-height: 120px;
 `;
 const WheelImage = styled.div`
   position: relative;
   margin-bottom: ${props => props.theme.paddingDefault}px;
   transition: all .2s ease;
+  width: 70%;
   img{
     position: relative;
   }
@@ -77,13 +78,19 @@ const WheelImage = styled.div`
     border-radius: 1000%;
     transition: bottom .2s ease;
   }
+  @media (max-width: ${props => props.theme.breakMd}px) {
+    width: 100%;
+  }
 `;
 const Wheel = styled.div`
+  width: 190px;
   cursor: pointer;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
   opacity: ${props => props.active ? '1' : '0.5'}
   transform: ${props => props.active ? 'scale(1.1)' : ''};
   transition: all .2s ease;
-  width: 160px;
   ${WheelDescription} {
     opacity: ${props => props.active ? '1' : '0'}
   }
@@ -107,7 +114,7 @@ const Wheel = styled.div`
   }
   @media (max-width: ${props => props.theme.breakMd}px) {
     width: 120px;
-    margin: 0px 20px;
+    margin: 0px ${props => props.theme.paddingDefault * 2}px;
     flex-shrink: 0;
     ${WheelDescription} {
       opacity: 1;
@@ -123,7 +130,7 @@ const Wheel = styled.div`
 
 const WheelDescriptionName = styled.p`
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: ${props => props.theme.primaryBlue}
   @media (max-width: ${props => props.theme.breakMd}px) {
     font-size: 1rem;
@@ -138,39 +145,28 @@ const WheelDescriptionBonus = styled.p`
   }
 `;
 
+
 const Wheels = props => {
+  const items = idx(props, _ => _.wheels.items) || [];
+  
   return (
     <StyledWheels>
       <StyledWheelsContainer>
         <WheelsTitle>Wheels</WheelsTitle>
         <WheelsContent>
-          <Wheel active>
-            <WheelImage>
-              <img src={wheelCarbon} alt=""/>
-            </WheelImage>
-            <WheelDescription>
-              <WheelDescriptionName>20" Silver Metallic</WheelDescriptionName>
-              <WheelDescriptionBonus>Included</WheelDescriptionBonus>
-            </WheelDescription>
-          </Wheel>
-          <Wheel>
-            <WheelImage>
-              <img src={wheelCarbon} alt=""/>
-            </WheelImage>
-            <WheelDescription>
-              <WheelDescriptionName>20" Silver Metallic</WheelDescriptionName>
-              <WheelDescriptionBonus>Included</WheelDescriptionBonus>
-            </WheelDescription>
-          </Wheel>
-          <Wheel>
-            <WheelImage>
-              <img src={wheelCarbon} alt=""/>
-            </WheelImage>
-            <WheelDescription>
-              <WheelDescriptionName>20" Silver Metallic</WheelDescriptionName>
-              <WheelDescriptionBonus>Included</WheelDescriptionBonus>
-            </WheelDescription>
-          </Wheel>
+          {
+            items.map((item, index) => (
+              <Wheel active={index === 0} key={item.id}>
+                <WheelImage>
+                  <img src={getWheel(item.id)} alt=""/>
+                </WheelImage>
+                <WheelDescription>
+                  <WheelDescriptionName>{item.label}</WheelDescriptionName>
+                  <WheelDescriptionBonus>{item.price === 0 ? 'Included' : item.price}</WheelDescriptionBonus>
+                </WheelDescription>
+              </Wheel>
+            ))
+          }
         </WheelsContent>
       </StyledWheelsContainer>
     </StyledWheels>

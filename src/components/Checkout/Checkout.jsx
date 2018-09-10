@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import idx from 'idx';
 
 import Container from '../common/Container/Container';
 
-import colorBlue from '../../utils/assets/color-blue.png';
+import finalRed from '../../utils/assets/final-red.png';
 
 import iconRebuild from '../../utils/assets/IconSpinnerRed.svg';
 
@@ -50,7 +51,7 @@ const CheckoutImageWrapper = styled.div`
 const CheckoutImage = styled.img`
   margin-bottom: 10px;
   position: relative;
-  left: ${props => props.theme.paddingDefault * -3}px;
+  max-width: 80%;
   @media (max-width: ${props => props.theme.breakMd}px) {
     max-height: 100%;
     width: auto;
@@ -165,11 +166,15 @@ const ReportListItem = styled.li`
 `;
 
 const Checkout = props => {
+  const selected = idx(props, _ => _.selected) || {};
+  const engine = idx(props, _ => _.selected.engine) || {};
+  const wheels = idx(props, _ => _.selected.wheels) || {};
+  const color = idx(props, _ => _.selected.color) || {};
   return (
     <StyledCheckout>
       <CheckoutContainer>
         <CheckoutImageWrapper>
-          <CheckoutImage src={colorBlue} alt="" />
+          <CheckoutImage src={finalRed} alt="" />
         </CheckoutImageWrapper>
         <CheckoutTitle>
           Your <strong>Model</strong> <b>R</b>
@@ -181,39 +186,39 @@ const Checkout = props => {
                 Starting price
               </ListItemName>
               <ListItemPrice>
-                $63.000
+                ${selected.price}
               </ListItemPrice>
             </ReportListItem>
             <ReportListItem>
               <ListItemName>
-                Starting price
+                {engine.kwh} {engine.p} - {engine.kwh + ` kWH`} - {engine.range + ` Miles range`}
               </ListItemName>
               <ListItemPrice>
-                $63.000
+                {engine.price === 0 ? 'Included' : `+ $${engine.price}`}
               </ListItemPrice>
             </ReportListItem>
             <ReportListItem>
               <ListItemName>
-                Starting price
+                {color.label}
               </ListItemName>
               <ListItemPrice>
-                $63.000
+                {color.price === 0 ? 'Included' : `+ $${color.price}`}
               </ListItemPrice>
             </ReportListItem>
             <ReportListItem>
               <ListItemName>
-                Starting price
+                {wheels.label}
               </ListItemName>
               <ListItemPrice>
-                $63.000
+                {wheels.price === 0 ? 'Included' : `+ $${wheels.price}`}
               </ListItemPrice>
             </ReportListItem>
             <ReportListItem>
               <ListItemName>
-                Starting price
+                Final price
               </ListItemName>
               <ListItemPrice>
-                $63.000
+                ${selected.total}
               </ListItemPrice>
             </ReportListItem>
           </ReportList>
