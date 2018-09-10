@@ -31,12 +31,17 @@ const StyledHeaderContainer = styled(Container)`
   }
 `;
 
+const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+`;
+
 const Header = () => (
   <StyledHeader>
     <StyledHeaderContainer>
-      <Link to="/">
+      <StyledLink to="/">
         <Logo />
-      </Link>
+      </StyledLink>
       <NavHeader />
     </StyledHeaderContainer>
   </StyledHeader>
