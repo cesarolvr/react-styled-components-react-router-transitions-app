@@ -22,6 +22,9 @@ const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: opacity 1s ease;
+  transition-delay: 1s;
+  opacity: ${props => props.visible ? '1' : '0'};
 `;
 
 const Content = styled.div`
@@ -60,9 +63,13 @@ const selectedOptions = {
 }
 
 class App extends Component {
+  state = {
+    visible: false,
+  }
   componentDidMount() {
     this.setState({
       ...this.state,
+      visible: true,
       selected: selectedOptions,
     })
     getCars()
@@ -157,8 +164,10 @@ class App extends Component {
     const car = idx(this.state, _ => _.car.data) || {};
     const location = idx(this.props, _ => _.location) || {};
     const { pathname } = location;
+    console.log(this.state.visible);
+    
     return (
-      <AppWrapper>
+      <AppWrapper visible={this.state.visible}>
         <Header />
         <Content>
           <AnimatedSwitch
