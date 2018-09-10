@@ -5,7 +5,7 @@ import idx from 'idx';
 
 import Container from '../common/Container/Container';
 
-import finalRed from '../../utils/assets/final-red.png';
+import { getFinalCar } from '../../utils/js/utils';
 
 import iconRebuild from '../../utils/assets/IconSpinnerRed.svg';
 
@@ -178,7 +178,7 @@ const Checkout = props => {
     <StyledCheckout>
       <CheckoutContainer>
         <CheckoutImageWrapper>
-          <CheckoutImage src={finalRed} alt="" />
+          <CheckoutImage src={getFinalCar(color.id)} alt="" />
         </CheckoutImageWrapper>
         <CheckoutTitle>
           Your <strong>Model</strong> <b>R</b>
