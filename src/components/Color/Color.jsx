@@ -155,6 +155,7 @@ const Color = props => {
     setColor
   } = props;
   
+  
   return (
     <StyledColor>
       <ColorContainer>
@@ -162,7 +163,7 @@ const Color = props => {
           <ColorImage src={getColor(selectedColor.id)} alt="" />
           <ColorImageDescription>
             <ColorImageDescriptionName>
-              Space Gray
+              {selectedColor.label}
               </ColorImageDescriptionName>
             <ColorImageDescriptionBonus>
               + ${selectedColor.price}
