@@ -154,6 +154,9 @@ const ColorImageDescriptionBonus = styled.h4`
 const Color = props => {
   const color = idx(props, _ => _.color) || {};
   const items = idx(props, _ => _.color.items) || [];
+  const {
+    setColor
+  } = props;
   return (
     <StyledColor>
       <ColorContainer>
@@ -179,7 +182,7 @@ const Color = props => {
         <ColorChoices>
           {
             items.map((item, index) => (
-              <ColorChoice red active={index === 0} key={item.id}>
+              <ColorChoice onClick={() => setColor(item)} active={index === 0} key={item.id}>
                 <img src={getDot(item.id)} alt={item.label} />
               </ColorChoice>
             ))
