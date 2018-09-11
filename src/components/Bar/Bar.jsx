@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom';
 import Container from '../common/Container/Container';
 import idx from 'idx';
 
 import { getDot, getWheel } from '../../utils/js/utils';
-
-import wheelCarbon from '../../utils/assets/wheel-carbon.png';
 
 import arrowNext from '../../utils/assets/IconArrowRightRed.svg';
 
@@ -46,12 +45,19 @@ const BarPart = styled.div`
   }
 `;
 
-// padrão
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
+
 const BarPartItem = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   padding: ${props => props.theme.paddingDefault}px;
+  transition: opacity .2s ease;
+  opacity: ${props => props.hidden ? '0' : '1'}
+  pointer-events: ${props => props.hidden ? 'none' : 'auto'}
 `;
 
 const BarPartItemTitle = styled.h3`
@@ -128,6 +134,19 @@ const BarPartItemNext = styled(BarPartItem)`
   }
 `;
 
+// Link de próximo
+const NextLink = styled(Link)`
+  text-decoration: none;
+  img {
+    transition: transform .2s ease;
+  }
+  &:hover{
+    img{
+      transform: translateX(${props => props.theme.paddingDefault / 2}px);
+    }
+  }
+`;
+
 const Bar = props => {
   const next = idx(props, _ => _.next) || "";
   const status = idx(props, _ => _.status) || "";
@@ -137,6 +156,8 @@ const Bar = props => {
   const color = idx(props, _ => _.selected.color) || {};
   const wheels = idx(props, _ => _.selected.wheels) || {};
 
+  const { location } = props;
+  const { pathname } = location;
   
   return (
     <StyledBar status={status}>
@@ -147,31 +168,39 @@ const Bar = props => {
             <BarPartItemText>${selected.total}</BarPartItemText>
           </BarPartItemPrice>
           <BarPartItemModel>
-            <BarPartItemTitle>{selected.name}</BarPartItemTitle>
+            <StyledLink to="/">
+              <BarPartItemTitle>{selected.name}</BarPartItemTitle>
+            </StyledLink>
           </BarPartItemModel>
           <BarPartItemEngine>
-            <BarPartItemTitle>
-              {engine.kwh}
-              <span>
-                {engine.type}
-              </span>
-            </BarPartItemTitle>
+            <StyledLink to="/engine">
+              <BarPartItemTitle>
+                {engine.kwh}
+                <span>
+                  {engine.type}
+                </span>
+              </BarPartItemTitle>
+            </StyledLink>
           </BarPartItemEngine>
-          <BarPartItemImage colorIcon>
-            <img src={getDot(color.id)} alt="Cor do carro" />
+          <BarPartItemImage colorIcon hidden={pathname === '/engine'}>
+            <StyledLink to="/color">
+              <img src={getDot(color.id)} alt="Cor do carro" />
+            </StyledLink>
           </BarPartItemImage>
-          <BarPartItemImage>
-            <img src={getWheel(wheels.id)} alt="Roda do carro" />
+          <BarPartItemImage hidden={pathname !== '/wheels'}>
+            <StyledLink to="/wheels">
+              <img src={getWheel(wheels.id)} alt="Roda do carro" />
+            </StyledLink>
           </BarPartItemImage>
         </BarPart>
         <BarPart>
           <BarPartItemNext>
-            <Link to={next}>
+            <NextLink to={next}>
               <BarPartItemTitle>
                 Next
               </BarPartItemTitle>
-              <img src={arrowNext} alt="Próxima etapa" />
-            </Link>
+              <img src={arrowNext} alt="Próxima etapa" title="Próxima etapa" />
+            </NextLink>
           </BarPartItemNext>
         </BarPart>
       </StyledBarContainer>
@@ -179,4 +208,4 @@ const Bar = props => {
   );
 };
 
-export default Bar;
+export default withRouter(Bar);

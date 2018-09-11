@@ -109,9 +109,13 @@ const ColorChoice = styled.div`
   justify-content: center;
   cursor: pointer;
   position: relative;
+  transition: border-color .2s ease;
   margin-top: ${props => props.theme.paddingDefault * -2}px;
   img{
     transform: scale(1.1);
+  }
+  &:hover{
+    border-color: ${props => props.active ? '#2E3948' : '#E2E2E2'};
   }
   @media (max-width: ${props => props.theme.breakMd}px) {
     width: 35px;

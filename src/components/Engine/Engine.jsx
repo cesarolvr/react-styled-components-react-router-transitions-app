@@ -81,10 +81,12 @@ const ItemInfo = styled.h4`
   font-weight: 400 };
   font-size: 1.3rem;
   letter-spacing: .1em;
+  transition: color .2s ease;
   color: ${props => props.tertiaryGray };
   span{
     font-weight: 500;
     color: ${props => props.theme.primaryBlue};
+    transition: color .2s ease;
   }
   @media (max-width: ${props => props.theme.breakLg}px) {
     font-size: 1rem;
@@ -93,12 +95,15 @@ const ItemInfo = styled.h4`
 
 const ItemInfoFeatured = styled(ItemInfo)`
   font-size: 1.8rem;
+  transition: color .2s ease;
   span {
     font-weight: 300;
+    transition: color .2s ease;
   }
   b{
     color: ${props => props.theme.primaryRed};
     margin-left: 5px;
+    transition: color .2s ease;
   }
   @media (max-width: ${props => props.theme.breakLg}px) {
     font-size: 1.3rem;
@@ -115,6 +120,19 @@ const ListItem = styled.li`
   cursor: pointer;
   &:last-of-type{
     margin-bottom: 0;
+  }
+  &:hover{
+    box-shadow: 0px 0px 10px #ccc;
+    transition: box-shadow .3s ease;
+    ${ItemInfo}{
+      color: ${props => props.theme.tertiaryGray}
+      span{
+        color: ${props => props.theme.primaryBlue};
+      }
+      b{
+        color: ${props => props.theme.primaryRed};
+      }
+    }
   }
   ${ItemCheck}{
     background: ${props => props.selected ? props.theme.primaryRed : 'white'};
