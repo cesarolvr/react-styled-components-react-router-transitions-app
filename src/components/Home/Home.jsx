@@ -98,7 +98,13 @@ const StyledLink = styled(Link)`
     letter-spacing: .6rem;
     color: ${props => props.theme.primaryBlue};
     font-weight: 500;
+    transition: margin-right .2s ease;
     margin-right: ${props => props.theme.paddingDefault}px;
+  }
+  &:hover{
+    span{
+      margin-right: ${props => props.theme.paddingDefault * 2}px;
+    }
   }
   @media (max-width: ${props => props.theme.breakMd}px) {
     margin-top: 0;
