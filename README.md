@@ -16,38 +16,36 @@ Para acessá-la online, esse é o [link](https://www.google.com)
 
 Para rodar o projeto em seu ambiente local, siga as instruções:
 
-### Pre-requisitos
-
-O único pré-requisito que você precisar ter instalado em seu computador, é o [Node](https://nodejs.org/en/).
-
-O restante das dependências, serão instaladas conforme as etapas seguintes forem seguidas.
-
+``` 
+O único pré-requisito que você precisar ter instalado em seu computador, é o [Node](https://nodejs.org/en/). 
+O restante das dependências, serão instaladas conforme as etapas seguintes forem seguidas. 
+```
 
 ### Instalação
 
 Abra seu terminal e clone o projeto em um diretório do seu computador.
 
-Caso esteja usando HTTPS:
+Caso esteja usando ***HTTPS***:
 
 ```
 git clone https://github.com/cesarolvr/cars-ventures.git
 ```
 
-Caso esteja usando SSH:
+Caso esteja usando ***SSH***:
 
 ```
 git clone git@github.com:cesarolvr/cars-ventures.git
 ```
 
-Entre no diretório ***carsventures*** e instale as dependências.
+Entre no diretório ***/carsventures*** e instale as dependências.
 
-Caso use Yarn:
+Caso use ***Yarn***:
 
 ```
 yarn
 ```
 
-Caso use NPM:
+Caso use ***NPM***:
 
 ```
 npm install
