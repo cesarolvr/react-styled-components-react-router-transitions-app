@@ -15,7 +15,8 @@ Para acessá-la online, esse é o [link](https://www.google.com)
 ## Documentação
 
 Todo o processo de desenvolvimento do projeto foi documentado e está disponível para ler [aqui](www.google.com.br).
-Todas as justificações e explicações técnicas podem ser conferidas nesse texto :)
+
+Todas as justificações e explicações técnicas podem ser conferidas e debatidas lá :)
 
 ## Getting Started
 
