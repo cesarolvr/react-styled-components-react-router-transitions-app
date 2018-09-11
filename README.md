@@ -14,7 +14,7 @@ Para acessá-la online, esse é o [link](https://www.google.com)
 
 ## Documentação
 
-Todo o processo de desenvolvimento do projeto foi documentado e está disponível para ler [aqui](www.google.com.br).
+Todo o processo de desenvolvimento do projeto foi documentado e está disponível para ler [aqui](https://medium.com/@cesarolvr/como-eu-desenvolvi-o-carsventures-6cee8afe150a).
 
 Todas as justificações e explicações técnicas podem ser conferidas e debatidas lá :)
 
@@ -25,10 +25,8 @@ Para rodar o projeto em seu ambiente local, siga as instruções:
 Você precisar ter isso instalado em seu computador:
 
 * [Node](https://nodejs.org/en/)   
-
-```  
+ 
 O restante das dependências, serão instaladas conforme as etapas seguintes forem seguidas. 
-```
 
 ### Instalação
 
