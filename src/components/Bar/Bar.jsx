@@ -134,6 +134,19 @@ const BarPartItemNext = styled(BarPartItem)`
   }
 `;
 
+// Link de próximo
+const NextLink = styled(Link)`
+  text-decoration: none;
+  img {
+    transition: transform .2s ease;
+  }
+  &:hover{
+    img{
+      transform: translateX(${props => props.theme.paddingDefault / 2}px);
+    }
+  }
+`;
+
 const Bar = props => {
   const next = idx(props, _ => _.next) || "";
   const status = idx(props, _ => _.status) || "";
@@ -182,12 +195,12 @@ const Bar = props => {
         </BarPart>
         <BarPart>
           <BarPartItemNext>
-            <Link to={next}>
+            <NextLink to={next}>
               <BarPartItemTitle>
                 Next
               </BarPartItemTitle>
-              <img src={arrowNext} alt="Próxima etapa" />
-            </Link>
+              <img src={arrowNext} alt="Próxima etapa" title="Próxima etapa" />
+            </NextLink>
           </BarPartItemNext>
         </BarPart>
       </StyledBarContainer>
