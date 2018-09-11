@@ -16,8 +16,10 @@ Para acessá-la online, esse é o [link](https://www.google.com)
 
 Para rodar o projeto em seu ambiente local, siga as instruções:
 
-``` 
-O único pré-requisito que você precisar ter instalado em seu computador, é o [Node](https://nodejs.org/en/). 
+Você precisar ter isso instalado em seu computador:
+⋅⋅* [Node](https://nodejs.org/en/)   
+
+```  
 O restante das dependências, serão instaladas conforme as etapas seguintes forem seguidas. 
 ```
 
