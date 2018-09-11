@@ -12,6 +12,11 @@ E essa é a página oficial do Carro. Aqui você pode escolher o ***motor***, as
 
 Para acessá-la online, esse é o [link](https://www.google.com)
 
+## Documentação
+
+Todo o processo de desenvolvimento do projeto foi documentado e está disponível para ler [aqui](www.google.com.br).
+Todas as justificações e explicações técnicas podem ser conferidas nesse texto :)
+
 ## Getting Started
 
 Para rodar o projeto em seu ambiente local, siga as instruções:
@@ -28,11 +33,13 @@ O restante das dependências, serão instaladas conforme as etapas seguintes for
 
 Abra seu terminal e clone o projeto em um diretório do seu computador.
 
+
 Caso esteja usando ***HTTPS***:
 
 ```
 git clone https://github.com/cesarolvr/cars-ventures.git
 ```
+
 
 Caso esteja usando ***SSH***:
 
@@ -40,13 +47,16 @@ Caso esteja usando ***SSH***:
 git clone git@github.com:cesarolvr/cars-ventures.git
 ```
 
-Entre no diretório ***/carsventures*** e instale as dependências.
+
+Entre no diretório ***/carsventures*** e instale as dependências:
+
 
 Caso use ***Yarn***:
 
 ```
 yarn
 ```
+
 
 Caso use ***NPM***:
 
