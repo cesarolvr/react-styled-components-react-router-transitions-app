@@ -162,7 +162,7 @@ const Home = () => {
             <BoxSubTitle>
               Model <strong>R</strong>
             </BoxSubTitle>
-            <BoxImageCar src={carImage} alt=""/>
+            <BoxImageCar src={carImage} alt="Imagem do Model R. O novo modelo da CarsVentures"/>
             <StyledLink to="/engine">
               <span>
                 Begin
