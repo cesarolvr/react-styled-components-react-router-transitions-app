@@ -9,11 +9,15 @@ O novo modelo da ***CarsVentures*** acaba de chegar ao mercado. O **Model R** pr
 
 Para acessá-la online, esse é o [link](https://www.google.com)
 
+
+
 ## Documentação
 
 Todo o processo de planejamento e desenvolvimento do projeto foi documentado e está disponível para conferir [aqui](https://trello.com/b/kX8ZzF0Y/cars-ventures)
 
 E todas as justificações e explicações técnicas podem ser conferidas e debatidas [aqui](https://medium.com/@cesarolvr/como-eu-desenvolvi-o-carsventures-6cee8afe150a) :)
+
+
 
 
 ## Getting Started
