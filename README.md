@@ -79,7 +79,9 @@ npm start
 
 Add additional notes about how to deploy this on a live system
 
-## Desenvolvido com
+
+
+## Tecnologias
 
 * [React](https://reactjs.org/) - Biblioteca Javascript para criação de interfaces
 * [Create React App](https://github.com/facebook/create-react-app) - Como um starter pack contendo uma aplicação React já configurada
@@ -91,12 +93,14 @@ Todas as outras tecnologias envolvidas podem ser vistas [aqui](https://github.co
 
 ## Autor
 
-* **Cesar Oliveira**
+###Cesar Oliveira
 
  - [Github](https://github.com/cesarolvr)
  - [Facebook](https://facebook.com/cesarolvra)
  - [Linkedin](https://linkedin.com/in/cesarolvr)
  - [Twitter](https://twitter.com/cesarolvr)
+ 
+ 
 
 ## License
 
