@@ -4,19 +4,15 @@
 
 ## O projeto
 
-O novo modelo da ***CarsVentures*** acaba de chegar ao mercado. 
-
-O **Model R** promete ser um lançamento revolucionário no mercado automobilistico universal. 
-
-E essa é a página oficial do Carro. Aqui você pode escolher o ***motor***, as ***cores*** e as ***rodas*** do seu Model R.
+O novo modelo da ***CarsVentures*** acaba de chegar ao mercado. O **Model R** promete ser um lançamento revolucionário no mercado automobilistico universal. E essa é a página oficial do Carro. Aqui você pode escolher o ***motor***, as ***cores*** e as ***rodas*** do seu Model R.
 
 Para acessá-la online, esse é o [link](https://www.google.com)
 
 ## Documentação
 
-Todo o processo de desenvolvimento do projeto foi documentado e está disponível para ler [aqui](https://medium.com/@cesarolvr/como-eu-desenvolvi-o-carsventures-6cee8afe150a).
+Todo o processo de planejamento e desenvolvimento do projeto foi documentado e está disponível para conferir [aqui](https://trello.com/b/kX8ZzF0Y/cars-ventures)
 
-Todas as justificações e explicações técnicas podem ser conferidas e debatidas lá :)
+E todas as justificações e explicações técnicas podem ser conferidas e debatidas [aqui](https://medium.com/@cesarolvr/como-eu-desenvolvi-o-carsventures-6cee8afe150a) :)
 
 ## Getting Started
 
@@ -63,37 +59,27 @@ Caso use ***NPM***:
 npm install
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Feito isso, basta apenas rodar o projeto com: 
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
 
 ```
-Give an example
+yarn
+```
+ou
+```
+npm start
 ```
 
-### And coding style tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
+## Build
 
 Add additional notes about how to deploy this on a live system
 
-## Built With
+## Construído com:
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [React](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Create React App](https://maven.apache.org/) - Dependency Management
+* [Styled Components](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
