@@ -4,7 +4,7 @@
 
 O novo modelo da ***CarsVentures*** acaba de chegar ao mercado. O **Model R** promete ser um lançamento revolucionário no mercado automobilistico universal. E essa é a página oficial do Carro. Aqui você pode escolher o ***motor***, as ***cores*** e as ***rodas*** do seu Model R.
 
-Para acessá-la online, esse é o [link](https://www.google.com)
+Para acessá-la online, esse é o [link](https://carsventures-ovqzyptlpr.now.sh/)
 
 
 
