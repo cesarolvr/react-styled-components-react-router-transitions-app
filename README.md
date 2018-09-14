@@ -88,6 +88,7 @@ npm start
 * [Create React App](https://github.com/facebook/create-react-app) - Como um starter pack contendo uma aplicação React já configurada
 * [Styled Components](https://www.styled-components.com/) - Para a escrita das regras de estilo
 * [React Router](https://reacttraining.com/react-router/) - Para controlar as rotas da aplicação
+* [Now](https://zeit.co/now) - Para um deploy de demonstração
 
 Todas as outras tecnologias envolvidas podem ser vistas [aqui](https://github.com/cesarolvr/cars-ventures/blob/master/package.json)
 
