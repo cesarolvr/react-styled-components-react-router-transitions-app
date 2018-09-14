@@ -1,6 +1,8 @@
+// @flow
+
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router';
 import { AnimatedSwitch, spring } from 'react-router-transition';
 import styled from 'styled-components';
 import idx from 'idx';
@@ -24,7 +26,7 @@ const AppWrapper = styled.div`
   height: 100%;
   transition: opacity 1s ease;
   transition-delay: 1s;
-  opacity: ${props => props.visible ? '1' : '0'};
+  opacity: ${props => (props.visible ? '1' : '0')};
 `;
 
 const Content = styled.div`
@@ -35,52 +37,50 @@ const Content = styled.div`
   height: 100%;
 `;
 
-const selectedOptions = {
+const initialCar = {
   price: 63000,
   total: 63000,
   name: 'Model R',
   engine: {
     id: 1,
-    image: "https://bit.ly/2wAFr4z",
+    image: 'https://bit.ly/2wAFr4z',
     kwh: 75,
     price: 0,
     range: 275,
-    type: "P",
+    type: 'P',
   },
   wheels: {
     id: 7,
-    image: "https://bit.ly/2Plx6sb",
+    image: 'https://bit.ly/2Plx6sb',
     label: '20" Silver Metalic',
     price: 0,
   },
   color: {
-    hexadecimal: "#AB1725",
+    hexadecimal: '#AB1725',
     id: 4,
-    image: "https://bit.ly/2LHJ3WT",
-    label: "Metalic Vermilion",
+    image: 'https://bit.ly/2LHJ3WT',
+    label: 'Metalic Vermilion',
     price: 0,
-  }
-}
+  },
+};
 
 class App extends Component {
   state = {
     visible: false,
-  }
-  componentDidMount() {
-    this.setState({
-      ...this.state,
-      visible: true,
-      selected: selectedOptions,
-    })
-    getCars()
-      .then(res => {
-        this.setState({
-          ...this.state,
-          car: res,
-        })
-      })
-      .catch(err => console.log(err));
-  }
+  };
+
+  // wrap the `spring` helper to use a bouncy config
+  bounce = val => spring(val, {
+    stiffness: 330,
+    damping: 22,
+  });
+
+  // we need to map the `scale` prop we define below
+  // to the transform style property
+  mapStyles = styles => ({
+    opacity: styles.opacity,
+    transform: `scale(${styles.scale})`,
+  });
 
   // child matches will...
   bounceTransition = {
@@ -100,63 +100,67 @@ class App extends Component {
       scale: this.bounce(1),
     },
   };
-  // wrap the `spring` helper to use a bouncy config
-  bounce(val) {
-    return spring(val, {
-      stiffness: 330,
-      damping: 22,
+
+  componentDidMount() {
+    this.setState({
+      ...this.state,
+      visible: true,
+      selected: initialCar,
+    });
+    getCars()
+      .then((res) => {
+        this.setState({
+          ...this.state,
+          car: res,
+        });
+      })
+      .catch(err => console.log(err));
+  }
+
+  setEngine = (newEngine) => {
+    const { selected } = this.state;
+    const { color, wheels, price } = selected;
+    this.setState({
+      ...this.state,
+      selected: {
+        ...selected,
+        engine: newEngine,
+        total: price + newEngine.price + color.price + wheels.price,
+      },
     });
   }
-  // we need to map the `scale` prop we define below
-  // to the transform style property
-  mapStyles(styles) {
-    return {
-      opacity: styles.opacity,
-      transform: `scale(${styles.scale})`,
-    };
-  }
 
-  setEngine = newEngine => {
-    const { color, wheels, price } = this.state.selected;
+  setColor = (newColor) => {
+    const { selected } = this.state;
+    const { engine, wheels, price } = selected;
     this.setState({
       ...this.state,
       selected: {
-        ...this.state.selected,
-        engine: newEngine,
-        total: price + newEngine.price + color.price + wheels.price
-      }
-    })
-  }
-
-  setColor = newColor => {
-    const { engine, wheels, price } = this.state.selected;
-    this.setState({
-      ...this.state,
-      selected: {
-        ...this.state.selected,
+        ...selected,
         color: newColor,
-        total: price + engine.price + newColor.price + wheels.price
-      }
-    })
+        total: price + engine.price + newColor.price + wheels.price,
+      },
+    });
   }
 
-  setWheels = newWheels => {
-    const { engine, color, price } = this.state.selected;
+  setWheels = (newWheels) => {
+    const { selected } = this.state;
+    const { engine, color, price } = selected;
     this.setState({
       ...this.state,
       selected: {
-        ...this.state.selected,
+        ...selected,
         wheels: newWheels,
-        total: price + engine.price + color.price + newWheels.price
-      }
-    })
+        total: price + engine.price + color.price + newWheels.price,
+      },
+    });
   }
 
   restart = () => {
     this.setState({
       ...this.state,
-      selected: selectedOptions,
-    })
+      selected: initialCar,
+    });
   }
 
   render() {
@@ -164,9 +168,9 @@ class App extends Component {
     const car = idx(this.state, _ => _.car.data) || {};
     const location = idx(this.props, _ => _.location) || {};
     const { pathname } = location;
-    
+    const { visible } = this.state;
     return (
-      <AppWrapper visible={this.state.visible}>
+      <AppWrapper visible={visible}>
         <Header />
         <Content>
           <AnimatedSwitch
@@ -179,7 +183,7 @@ class App extends Component {
             <Route exact path="/" render={() => <Home />} />
             <Route path="/engine" render={() => <Engine engine={car.engine} selected={selectedOptions} setEngine={this.setEngine} />} />
             <Route path="/color" render={() => <Color color={car.color} selected={selectedOptions} setColor={this.setColor} />} />
-            <Route path="/wheels" render={() => <Wheels wheels={car.wheels} selected={selectedOptions} setWheels={this.setWheels}/>} />
+            <Route path="/wheels" render={() => <Wheels wheels={car.wheels} selected={selectedOptions} setWheels={this.setWheels} />} />
             <Route path="/checkout" render={() => <Checkout selected={selectedOptions} restart={this.restart} />} />
           </AnimatedSwitch>
         </Content>
