@@ -95,9 +95,7 @@ npm start
 Todas as outras tecnologias envolvidas podem ser vistas [aqui](https://github.com/cesarolvr/cars-ventures/blob/master/package.json)
 
 
-## Autor
-
-###Cesar Oliveira
+## Cesar Oliveira
 
  - [Github](https://github.com/cesarolvr)
  - [Facebook](https://facebook.com/cesarolvra)
