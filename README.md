@@ -76,8 +76,9 @@ npm start
 
 ## Build
 
-...
-
+```
+yarn build
+```
 
 
 ## Tecnologias
