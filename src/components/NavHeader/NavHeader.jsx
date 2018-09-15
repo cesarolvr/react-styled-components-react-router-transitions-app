@@ -38,7 +38,11 @@ const NavHeader = () => (
         Model R
       </Link>
     </StyledItem>
-    <StyledItem>Model IQ</StyledItem>
+    <StyledItem>
+      <Link title="Model IQ" to="/building">
+        Model IQ
+      </Link>
+    </StyledItem>
     <StyledItem>Model Mobi</StyledItem>
     <StyledItem>Model Charlie</StyledItem>
     <StyledItem>Model Italy</StyledItem>

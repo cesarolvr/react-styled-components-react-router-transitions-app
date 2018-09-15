@@ -18,6 +18,7 @@ import Color from './components/Color/Color';
 import Wheels from './components/Wheels/Wheels';
 import Checkout from './components/Checkout/Checkout';
 import Bar from './components/Bar/Bar';
+import Building from './components/Building/Building';
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -185,6 +186,7 @@ class App extends Component {
             <Route path="/color" render={() => <Color color={car.color} selected={selectedOptions} setColor={this.setColor} />} />
             <Route path="/wheels" render={() => <Wheels wheels={car.wheels} selected={selectedOptions} setWheels={this.setWheels} />} />
             <Route path="/checkout" render={() => <Checkout selected={selectedOptions} restart={this.restart} />} />
+            <Route path="/building" render={() => <Building />} />
           </AnimatedSwitch>
         </Content>
         <Bar status={getStateBar(location)} next={getLinkNext(pathname)} selected={selectedOptions} />

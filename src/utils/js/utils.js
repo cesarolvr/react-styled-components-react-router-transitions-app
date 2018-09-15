@@ -89,7 +89,7 @@ const getFinalCar = (id) => {
 
 const getStateBar = (context) => {
   const { pathname } = context;
-  if (pathname !== '/checkout' && pathname !== '/') return 'opened';
+  if (pathname !== '/checkout' && pathname !== '/building' && pathname !== '/') return 'opened';
   return 'closed';
 };
 
