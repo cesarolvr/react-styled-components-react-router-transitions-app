@@ -10,9 +10,9 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <ThemeProvider theme={THEME}>
-  <Router>
-    <App />
-  </Router>
+    <Router>
+      <App />
+    </Router>
   </ThemeProvider>,
   document.getElementById('root'),
 );
