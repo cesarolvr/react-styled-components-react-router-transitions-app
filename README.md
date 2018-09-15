@@ -10,7 +10,6 @@ Para acessar online, esse é o <a href="https://carsventures-ovqzyptlpr.now.sh/"
 ## Documentação
 
 Todo o processo de planejamento e desenvolvimento do projeto foi documentado e está disponível para conferir [aqui](https://trello.com/b/kX8ZzF0Y/cars-ventures)
-
 E todas as justificações e explicações técnicas podem ser conferidas e debatidas [aqui](https://medium.com/@cesarolvr/como-eu-desenvolvi-o-carsventures-6cee8afe150a) :)
 
 
@@ -18,7 +17,7 @@ E todas as justificações e explicações técnicas podem ser conferidas e deba
 
 ## Getting Started
 
-Para rodar o projeto em seu ambiente local, siga as instruções:
+Para rodar a aplicação em seu ambiente local, siga as instruções:
 
 Instale os items abaixo:
 
