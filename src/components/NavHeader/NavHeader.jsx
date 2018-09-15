@@ -43,9 +43,21 @@ const NavHeader = () => (
         Model IQ
       </Link>
     </StyledItem>
-    <StyledItem>Model Mobi</StyledItem>
-    <StyledItem>Model Charlie</StyledItem>
-    <StyledItem>Model Italy</StyledItem>
+    <StyledItem>
+      <Link title="Model Mobi" to="/building">
+        Model Mobi
+      </Link>
+    </StyledItem>
+    <StyledItem>
+      <Link title="Model Charlie" to="/building">
+        Model Charlie
+      </Link>
+    </StyledItem>
+    <StyledItem>
+      <Link title="Model Italy" to="/building">
+        Model Italy
+      </Link>
+    </StyledItem>
   </StyledList>
 );
 
