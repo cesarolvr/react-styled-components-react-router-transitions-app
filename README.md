@@ -80,6 +80,12 @@ npm start
 yarn build
 ```
 
+ou 
+
+```
+npm run build
+```
+
 
 ## Tecnologias
 
