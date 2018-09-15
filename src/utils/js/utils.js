@@ -1,97 +1,98 @@
-import dotRed from '../assets/dot-red-no-shadow.svg';
-import dotBlue from '../assets/dot-blue-no-shadow.svg';
-import dotGray from '../assets/dot-gray-no-shadow.svg';
+import dotRed from '../../assets/dot-red-no-shadow.svg';
+import dotBlue from '../../assets/dot-blue-no-shadow.svg';
+import dotGray from '../../assets/dot-gray-no-shadow.svg';
 
-import wheelCarbon from '../assets/wheel-carbon.png';
-import wheelGrafitti from '../assets/wheel-grafitti.png';
-import wheelMetalic from '../assets/wheel-metalic.png';
+import wheelCarbon from '../../assets/wheel-carbon.png';
+import wheelGrafitti from '../../assets/wheel-grafitti.png';
+import wheelMetalic from '../../assets/wheel-metalic.png';
 
-import engineImage from '../assets/engine-1.png';
-import engineImage2 from '../assets/engine-2.png';
+import engineImage from '../../assets/engine-1.png';
+import engineImage2 from '../../assets/engine-2.png';
 
-import colorRed from '../assets/color-red.png';
-import colorBlue from '../assets/color-blue.png';
-import colorGray from '../assets/color-gray.png';
+import colorRed from '../../assets/color-red.png';
+import colorBlue from '../../assets/color-blue.png';
+import colorGray from '../../assets/color-gray.png';
 
-import finalRed from '../assets/final-red.png';
-import finalBlue from '../assets/final-blue.png';
-import finalGray from '../assets/final-gray.png';
+import finalRed from '../../assets/final-red.png';
+import finalBlue from '../../assets/final-blue.png';
+import finalGray from '../../assets/final-gray.png';
 
-const getDot = id => {
-  switch(id) {
+const getDot = (id) => {
+  switch (id) {
     case 4:
-        return dotRed
+      return dotRed;
     case 5:
-      return dotBlue
+      return dotBlue;
     default:
-      return dotGray
+      return dotGray;
   }
-}
+};
 
-const getWheel = id => {
-  switch(id) {
+const getWheel = (id) => {
+  switch (id) {
     case 7:
-        return wheelMetalic
+      return wheelMetalic;
     case 8:
-      return wheelGrafitti
+      return wheelGrafitti;
     default:
-      return wheelCarbon
+      return wheelCarbon;
   }
-}
+};
 
 const getLinkNext = (path) => {
   switch (path) {
     case '/':
-      return '/engine'
+      return '/engine';
     case '/engine':
-      return '/color'
+      return '/color';
     case '/color':
-      return '/wheels'
+      return '/wheels';
     case '/wheels':
-      return '/checkout'
+      return '/checkout';
     default:
-      return '/'
+      return '/';
   }
-}
+};
 
-const getEngine = id => {
-  switch(id) {
+const getEngine = (id) => {
+  switch (id) {
     case 2:
-        return engineImage2
+      return engineImage2;
     case 3:
-        return engineImage2
+      return engineImage2;
     default:
-      return engineImage
+      return engineImage;
   }
-}
+};
 
-const getColor = id => {
-  switch(id) {
+const getColor = (id) => {
+  switch (id) {
     case 4:
-        return colorRed
+      return colorRed;
     case 5:
-        return colorBlue
+      return colorBlue;
     default:
-      return colorGray
+      return colorGray;
   }
-}
+};
 
-const getFinalCar = id => {
-  switch(id) {
+const getFinalCar = (id) => {
+  switch (id) {
     case 4:
-        return finalRed
+      return finalRed;
     case 5:
-        return finalBlue
+      return finalBlue;
     default:
-      return finalGray
+      return finalGray;
   }
-}
+};
 
-const getStateBar = context => {
+const getStateBar = (context) => {
   const { pathname } = context;
   if (pathname !== '/checkout' && pathname !== '/') return 'opened';
   return 'closed';
-}
+};
 
-
-export { getDot, getWheel, getLinkNext, getStateBar, getEngine, getColor, getFinalCar }
+export {
+  getDot, getWheel, getLinkNext, getStateBar, getEngine, getColor, getFinalCar,
+};

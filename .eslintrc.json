@@ -25,7 +25,6 @@
         "specialLink": [ "to", "hrefLeft", "hrefRight" ],
         "aspects": [ "noHref", "invalidHref", "preferButton" ]
       }],
-      "arrow-parens": ["as-needed"],
       "function-paren-newline": ["error", "consistent"],
       "react/sort-comp": [1, {
         "order": [

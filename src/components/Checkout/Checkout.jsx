@@ -165,7 +165,7 @@ const ReportListItem = styled.li`
   }
 `;
 
-const Checkout = props => {
+const Checkout = (props) => {
   const selected = idx(props, _ => _.selected) || {};
   const engine = idx(props, _ => _.selected.engine) || {};
   const wheels = idx(props, _ => _.selected.wheels) || {};
@@ -181,7 +181,9 @@ const Checkout = props => {
           <CheckoutImage src={getFinalCar(color.id)} alt="Carro final escolhido" />
         </CheckoutImageWrapper>
         <CheckoutTitle>
-          Your <strong>Model</strong> <b>R</b>
+          Your
+          <strong>Model</strong>
+          <b>R</b>
         </CheckoutTitle>
         <CheckoutReports>
           <ReportList>
@@ -190,7 +192,8 @@ const Checkout = props => {
                 Starting price
               </ListItemName>
               <ListItemPrice>
-                ${selected.price}
+                $
+                {selected.price}
               </ListItemPrice>
             </ReportListItem>
             <ReportListItem>
@@ -222,13 +225,14 @@ const Checkout = props => {
                 Final price
               </ListItemName>
               <ListItemPrice>
-                ${selected.total}
+                $
+                {selected.total}
               </ListItemPrice>
             </ReportListItem>
           </ReportList>
           <LinkRebuild to="/" title="Rebuild" onClick={() => restart()}>
             <span>Rebuild</span>
-            <img src={iconRebuild} alt="Rebuild the proccess"/>
+            <img src={iconRebuild} alt="Rebuild the proccess" />
           </LinkRebuild>
         </CheckoutReports>
       </CheckoutContainer>
