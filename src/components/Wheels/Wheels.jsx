@@ -180,7 +180,7 @@ class Wheels extends React.PureComponent {
               items.map(item => (
                 <Wheel active={this.state.wheelsActived === item.id} key={item.id} onClick={() => this.changeWheels(item)}>
                   <WheelImage>
-                    <img src={getWheel(item.id)} alt="Imagem do modelo de roda para o carro"/>
+                    <img src={getWheel(item.id)} alt="Wheel`s image of the car"/>
                   </WheelImage>
                   <WheelDescription>
                     <WheelDescriptionName>{item.label}</WheelDescriptionName>

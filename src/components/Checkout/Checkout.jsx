@@ -178,7 +178,7 @@ const Checkout = props => {
     <StyledCheckout>
       <CheckoutContainer>
         <CheckoutImageWrapper>
-          <CheckoutImage src={getFinalCar(color.id)} alt="" />
+          <CheckoutImage src={getFinalCar(color.id)} alt="Carro final escolhido" />
         </CheckoutImageWrapper>
         <CheckoutTitle>
           Your <strong>Model</strong> <b>R</b>
@@ -226,9 +226,9 @@ const Checkout = props => {
               </ListItemPrice>
             </ReportListItem>
           </ReportList>
-          <LinkRebuild to="/" onClick={() => restart()}>
+          <LinkRebuild to="/" title="Rebuild" onClick={() => restart()}>
             <span>Rebuild</span>
-            <img src={iconRebuild} alt=""/>
+            <img src={iconRebuild} alt="Rebuild the proccess"/>
           </LinkRebuild>
         </CheckoutReports>
       </CheckoutContainer>

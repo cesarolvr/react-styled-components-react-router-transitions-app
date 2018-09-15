@@ -35,7 +35,7 @@ const NavHeader = () => {
   return (
     <StyledList>
       <StyledItem active>
-        <Link to="/">
+        <Link title="Model R" to="/">
           Model R
         </Link>
       </StyledItem>

@@ -162,12 +162,12 @@ const Home = () => {
             <BoxSubTitle>
               Model <strong>R</strong>
             </BoxSubTitle>
-            <BoxImageCar src={carImage} alt="Imagem do Model R. O novo modelo da CarsVentures"/>
-            <StyledLink to="/engine">
+            <BoxImageCar src={carImage} alt="Model R image. The new model of CarsVentures"/>
+            <StyledLink title="Go to choose the engine" to="/engine">
               <span>
                 Begin
               </span>
-              <img src={arrowNext} alt="Próxima etapa" />
+              <img src={arrowNext} alt="Next step" />
             </StyledLink>
           </Box>
         </HomeBanner>

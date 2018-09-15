@@ -39,7 +39,7 @@ const StyledLink = styled(Link)`
 const Header = () => (
   <StyledHeader>
     <StyledHeaderContainer>
-      <StyledLink to="/">
+      <StyledLink title="Back to Home" to="/">
         <Logo />
       </StyledLink>
       <NavHeader />

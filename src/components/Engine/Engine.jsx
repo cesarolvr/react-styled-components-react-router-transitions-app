@@ -186,7 +186,7 @@ class Engine extends React.Component {
     return (
       <StyledEngine>
         <EngineContainer>
-            <EngineImage src={getEngine(engine.id)} alt="Imagem do motor escolhido do carro"/>
+            <EngineImage src={getEngine(engine.id)} alt="Engine`s image of the car"/>
             <EngineTitle>Engine</EngineTitle>
             <EngineList>
               {
