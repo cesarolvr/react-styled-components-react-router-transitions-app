@@ -1,10 +1,13 @@
-# CarsVentures
+<h1 align="center">CarsVentures</h1>
 
 ![alt text](https://lh3.googleusercontent.com/_bWU7QpJqKsKjWpDINLXPhETbTrPJbTLTwqIGlQ_ko0KhZShkaDllEMnR_hcZyW9OuPLeQjDXggFr_TYPlaIG381DP6EUIH7hiX8VFYTpMVyxHioTUGoFaku6epkj1Dxm3iFGOtbQo6leT85u5iRZ6WkEjOqjCGn7S27JVTDcAYjm9jXQwwtXcWohoEjm00rsKb2FYWQQuGZrpxa6uyYk7Gl2uMcLzmCkg0R2mco8wQxJ9pYCsYaa8DV_-P9WFVlvfd6PxLEbp9TVqKW3HkzR7dTf_akosOzGyw_Tj6Nz0eJvZJIDlEehUzu4K2lpASnP2rIjXb12nlzJRw4c1hUTB2ZAGKPrCLJCQeKLGqGBnIUoedP2mczcIlfLGphm3RgpA5CuQGJ1t4F-1YEBnqdLwegozv0PjY8laCXY6M9pQoN9UBsUaTebu84-Oco1TFHmLhoc6V_xmZcOYWnRKMDDbwc-aPTnVp0Nnqpm6z9NIB2IWM2DHg0WgetkS-46Qfj9SQ0oB9Yt9UkKHdXgV0Q5IuEGBGpkRyb02Y2BbM0vWka7S-zIzQaDWzUbB1dghHd0DzKwa0W3ShnIg_XH4wIfpyTne-lsGIs=w2030-h1398)
 
-O novo modelo da ***CarsVentures*** acaba de chegar ao mercado. O **Model R** promete ser um lançamento revolucionário no mercado automobilistico universal. E essa é a página oficial do Carro. Aqui você pode escolher o ***motor***, as ***cores*** e as ***rodas*** do seu Model R.
 
-Para acessar online, esse é o <a href="https://carsventures-ovqzyptlpr.now.sh/" target="_blank">link</a>
+<div align="center">
+  O novo modelo da ***CarsVentures*** acaba de chegar ao mercado. O **Model R** promete ser um lançamento revolucionário no   mercado automobilistico universal. E essa é a página oficial do Carro. Aqui você pode escolher o ***motor***, as ***cores*** e as ***rodas*** do seu Model R.
+ 
+ Para acessar online, esse é o <a href="https://carsventures-ovqzyptlpr.now.sh/" target="_blank">link</a>
+</div>
 
 
 ## Documentação
