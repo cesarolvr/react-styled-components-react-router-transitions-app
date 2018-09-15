@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 import Container from '../common/Container/Container';
 
-import carImage from '../../utils/assets/car-home.png';
-import arrowNext from '../../utils/assets/IconArrowRightRed.svg';
+import carImage from '../../assets/car-home.png';
+import arrowNext from '../../assets/IconArrowRightRed.svg';
 
 const StyledHome = styled.div`
   display: flex;

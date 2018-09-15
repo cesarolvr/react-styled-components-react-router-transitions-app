@@ -7,7 +7,7 @@ import Container from '../common/Container/Container';
 
 import { getFinalCar } from '../../utils/js/utils';
 
-import iconRebuild from '../../utils/assets/IconSpinnerRed.svg';
+import iconRebuild from '../../assets/IconSpinnerRed.svg';
 
 const StyledCheckout = styled.div``;
 const CheckoutContainer = styled(Container)`

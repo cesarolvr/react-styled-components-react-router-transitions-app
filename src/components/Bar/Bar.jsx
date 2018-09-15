@@ -7,7 +7,7 @@ import idx from 'idx';
 
 import { getDot, getWheel } from '../../utils/js/utils';
 
-import arrowNext from '../../utils/assets/IconArrowRightRed.svg';
+import arrowNext from '../../assets/IconArrowRightRed.svg';
 
 const StyledBar = styled.div`
   background: white;
