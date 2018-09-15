@@ -88,11 +88,11 @@ const Wheel = styled.div`
   flex-direction: column;
   display: flex;
   align-items: center;
-  opacity: ${props => props.active ? '1' : '0.5'}
-  transform: ${props => props.active ? 'scale(1.1)' : ''};
+  opacity: ${props => (props.active ? '1' : '0.5')}
+  transform: ${props => (props.active ? 'scale(1.1)' : '')};
   transition: all .2s ease;
   ${WheelDescription} {
-    opacity: ${props => props.active ? '1' : '0'}
+    opacity: ${props => (props.active ? '1' : '0')}
   }
   &:hover{
       opacity: 1;
@@ -150,27 +150,29 @@ class Wheels extends React.PureComponent {
   state = {
     wheelsActived: 7,
   }
-  componentDidMount(){
+
+  componentDidMount() {
     const selectedWheels = idx(this.props, _ => _.selected.wheels) || {};
     this.setState({
-      wheelsActived: selectedWheels.id
-    })
+      wheelsActived: selectedWheels.id,
+    });
   }
 
-  changeWheels = item => {
+  changeWheels = (item) => {
     const {
       setWheels
     } = this.props;
 
     this.setState({
-      wheelsActived: item.id
-    })
+      wheelsActived: item.id,
+    });
 
     setWheels(item);
   }
 
   render() {
     const items = idx(this.props, _ => _.wheels.items) || [];
+    const { wheelsActived } = this.state;
     return (
       <StyledWheels>
         <StyledWheelsContainer>
@@ -178,9 +180,9 @@ class Wheels extends React.PureComponent {
           <WheelsContent>
             {
               items.map(item => (
-                <Wheel active={this.state.wheelsActived === item.id} key={item.id} onClick={() => this.changeWheels(item)}>
+                <Wheel active={wheelsActived === item.id} key={item.id} onClick={() => this.changeWheels(item)}>
                   <WheelImage>
-                    <img src={getWheel(item.id)} alt=""/>
+                    <img src={getWheel(item.id)} alt="Wheels of the car" />
                   </WheelImage>
                   <WheelDescription>
                     <WheelDescriptionName>{item.label}</WheelDescriptionName>
@@ -194,6 +196,6 @@ class Wheels extends React.PureComponent {
       </StyledWheels>
     );
   }
-};
+}
 
 export default Wheels;

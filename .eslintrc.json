@@ -25,7 +25,16 @@
         "specialLink": [ "to", "hrefLeft", "hrefRight" ],
         "aspects": [ "noHref", "invalidHref", "preferButton" ]
       }],
-      "function-paren-newline": ["error", "consistent"]
+      "function-paren-newline": ["error", "consistent"],
+      "react/sort-comp": [1, {
+        "order": [
+          "constructor",
+          "everything-else",
+          "lifecycle",
+          "everything-else",
+          "render"
+        ]
+      }]
     }
   }
   

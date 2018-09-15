@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 import Container from '../common/Container/Container';
 
-import carImage from '../../utils/assets/car-home.png';
-import arrowNext from '../../utils/assets/IconArrowRightRed.svg';
+import carImage from '../../assets/car-home.png';
+import arrowNext from '../../assets/IconArrowRightRed.svg';
 
 const StyledHome = styled.div`
   display: flex;
@@ -150,59 +150,57 @@ const HomeDockItemLabel = styled.p`
 `;
 
 
-const Home = () => {
-  return (
-    <StyledHome>
-      <HomeContainer>
-        <HomeBanner>
-          <Box>
-            <BoxTitle>
-              Build your
-            </BoxTitle>
-            <BoxSubTitle>
-              Model <strong>R</strong>
-            </BoxSubTitle>
-            <BoxImageCar src={carImage} alt=""/>
-            <StyledLink to="/engine">
-              <span>
-                Begin
-              </span>
-              <img src={arrowNext} alt="Próxima etapa" />
-            </StyledLink>
-          </Box>
-        </HomeBanner>
-        <HomeDock>
-          <HomeDockItem>
-            <HomeDockItemTitle>
-              2.5
-              <small>s</small>
-            </HomeDockItemTitle>
-            <HomeDockItemLabel>
-              From 0 to 100
-            </ HomeDockItemLabel>
-          </HomeDockItem>
-          <HomeDockItem>
-            <HomeDockItemTitle>
-              420
-              <small>mi</small>
-            </HomeDockItemTitle>
-            <HomeDockItemLabel>
-              Miles range
-            </ HomeDockItemLabel>
-          </HomeDockItem>
-          <HomeDockItem>
-            <HomeDockItemTitle>
-              250
-              <small>mp/h</small>
-            </HomeDockItemTitle>
-            <HomeDockItemLabel>
-              Max speed
-            </ HomeDockItemLabel>
-          </HomeDockItem>
-        </HomeDock>
-      </HomeContainer>
-    </StyledHome>
-  );
-};
+const Home = () => (
+  <StyledHome>
+    <HomeContainer>
+      <HomeBanner>
+        <Box>
+          <BoxTitle>
+            Build your
+          </BoxTitle>
+          <BoxSubTitle>
+            Model <strong>R</strong>
+          </BoxSubTitle>
+          <BoxImageCar src={carImage} alt="Model R image. The new model of CarsVentures" />
+          <StyledLink title="Go to choose the engine" to="/engine">
+            <span>
+              Begin
+            </span>
+            <img src={arrowNext} alt="Next step" />
+          </StyledLink>
+        </Box>
+      </HomeBanner>
+      <HomeDock>
+        <HomeDockItem>
+          <HomeDockItemTitle>
+            2.5
+            <small>s</small>
+          </HomeDockItemTitle>
+          <HomeDockItemLabel>
+            From 0 to 100
+          </HomeDockItemLabel>
+        </HomeDockItem>
+        <HomeDockItem>
+          <HomeDockItemTitle>
+            420
+            <small>mi</small>
+          </HomeDockItemTitle>
+          <HomeDockItemLabel>
+            Miles range
+          </HomeDockItemLabel>
+        </HomeDockItem>
+        <HomeDockItem>
+          <HomeDockItemTitle>
+            250
+            <small>mp/h</small>
+          </HomeDockItemTitle>
+          <HomeDockItemLabel>
+            Max speed
+          </HomeDockItemLabel>
+        </HomeDockItem>
+      </HomeDock>
+    </HomeContainer>
+  </StyledHome>
+);
 
 export default Home;

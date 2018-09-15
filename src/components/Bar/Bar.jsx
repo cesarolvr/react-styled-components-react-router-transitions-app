@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router'
+import idx from 'idx';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import Container from '../common/Container/Container';
-import idx from 'idx';
 
 import { getDot, getWheel } from '../../utils/js/utils';
 
-import arrowNext from '../../utils/assets/IconArrowRightRed.svg';
+import arrowNext from '../../assets/IconArrowRightRed.svg';
 
 const StyledBar = styled.div`
   background: white;
@@ -17,8 +17,8 @@ const StyledBar = styled.div`
   align-items: center;
   justify-content: space-between;
   position: relative;
-  max-height: ${props => props.status === 'opened' ? '200px' : '0'};
-  bottom: ${props => props.status === 'opened' ? '0' : '-100px'};
+  max-height: ${props => (props.status === 'opened' ? '200px' : '0')};
+  bottom: ${props => (props.status === 'opened' ? '0' : '-100px')};
   transition: all .2s ease;
 `;
 
@@ -32,7 +32,7 @@ const BarPart = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-grow: ${props => props.grow ? 1 : 'initial'}
+  flex-grow: ${props => (props.grow ? 1 : 'initial')}
   padding: 0px ${props => props.theme.paddingDefault * 4}px;
   &:first-of-type{
     padding-left: 0;
@@ -56,8 +56,8 @@ const BarPartItem = styled.div`
   flex-direction: column;
   padding: ${props => props.theme.paddingDefault}px;
   transition: opacity .2s ease;
-  opacity: ${props => props.hidden ? '0' : '1'}
-  pointer-events: ${props => props.hidden ? 'none' : 'auto'}
+  opacity: ${props => (props.hidden ? '0' : '1')}
+  pointer-events: ${props => (props.hidden ? 'none' : 'auto')}
 `;
 
 const BarPartItemTitle = styled.h3`
@@ -110,7 +110,7 @@ const BarPartItemEngine = styled(BarPartItem)`
 // item com imagem (cor e roda)
 const BarPartItemImage = styled(BarPartItem)`
   img {
-    width: ${props => props.colorIcon ? '32px' : '35px'};
+    width: ${props => (props.colorIcon ? '32px' : '35px')};
   }
   @media (max-width: ${props => props.theme.breakMd}px) {
     display: none;
@@ -147,9 +147,9 @@ const NextLink = styled(Link)`
   }
 `;
 
-const Bar = props => {
-  const next = idx(props, _ => _.next) || "";
-  const status = idx(props, _ => _.status) || "";
+const Bar = (props) => {
+  const next = idx(props, _ => _.next) || '';
+  const status = idx(props, _ => _.status) || '';
 
   const selected = idx(props, _ => _.selected) || {};
   const engine = idx(props, _ => _.selected.engine) || {};
@@ -158,22 +158,24 @@ const Bar = props => {
 
   const { location } = props;
   const { pathname } = location;
-  
   return (
     <StyledBar status={status}>
       <StyledBarContainer>
         <BarPart grow>
           <BarPartItemPrice>
             <BarPartItemTitle>Total</BarPartItemTitle>
-            <BarPartItemText>${selected.total}</BarPartItemText>
+            <BarPartItemText>
+              $
+              {selected.total}
+            </BarPartItemText>
           </BarPartItemPrice>
           <BarPartItemModel>
-            <StyledLink to="/">
+            <StyledLink title="Go to Home" to="/">
               <BarPartItemTitle>{selected.name}</BarPartItemTitle>
             </StyledLink>
           </BarPartItemModel>
           <BarPartItemEngine>
-            <StyledLink to="/engine">
+            <StyledLink title="Go to choose Engine" to="/engine">
               <BarPartItemTitle>
                 {engine.kwh}
                 <span>
@@ -183,12 +185,12 @@ const Bar = props => {
             </StyledLink>
           </BarPartItemEngine>
           <BarPartItemImage colorIcon hidden={pathname === '/engine'}>
-            <StyledLink to="/color">
+            <StyledLink title="Go to choose Color" to="/color">
               <img src={getDot(color.id)} alt="Cor do carro" />
             </StyledLink>
           </BarPartItemImage>
           <BarPartItemImage hidden={pathname !== '/wheels'}>
-            <StyledLink to="/wheels">
+            <StyledLink title="Go to choose Wheels" to="/wheels">
               <img src={getWheel(wheels.id)} alt="Roda do carro" />
             </StyledLink>
           </BarPartItemImage>

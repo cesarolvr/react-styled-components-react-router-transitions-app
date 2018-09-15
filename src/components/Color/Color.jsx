@@ -102,7 +102,7 @@ const ColorChoices = styled.div`
 const ColorChoice = styled.div`
   width: 48px;
   height: 48px;
-  border: 10px solid ${props => props.active ? '#2E3948' : '#F2F2F2'};
+  border: 10px solid ${props => (props.active ? '#2E3948' : '#F2F2F2')};
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -115,7 +115,7 @@ const ColorChoice = styled.div`
     transform: scale(1.1);
   }
   &:hover{
-    border-color: ${props => props.active ? '#2E3948' : '#E2E2E2'};
+    border-color: ${props => (props.active ? '#2E3948' : '#E2E2E2')};
   }
   @media (max-width: ${props => props.theme.breakMd}px) {
     width: 35px;
@@ -156,30 +156,30 @@ class Color extends Component {
     colorActived: 4,
   }
 
-  componentDidMount(){
-    const selectedColor = idx(this.props, _ => _.selected.color) || {};
-    this.setState({
-      colorActived: selectedColor.id
-    })
-  }
-
-  changeColor = item => {
+  changeColor = (item) => {
     const {
       setColor
     } = this.props;
 
     this.setState({
-      colorActived: item.id
-    })
+      colorActived: item.id,
+    });
 
     setColor(item);
+  }
+
+  componentDidMount() {
+    const selectedColor = idx(this.props, _ => _.selected.color) || {};
+    this.setState({
+      colorActived: selectedColor.id,
+    });
   }
 
   render() {
     const color = idx(this.props, _ => _.color) || {};
     const items = idx(this.props, _ => _.color.items) || [];
     const selectedColor = idx(this.props, _ => _.selected.color) || {};
-    
+    const { colorActived } = this.state;
     return (
       <StyledColor>
         <ColorContainer>
@@ -188,10 +188,10 @@ class Color extends Component {
             <ColorImageDescription>
               <ColorImageDescriptionName>
                 {selectedColor.label}
-                </ColorImageDescriptionName>
+              </ColorImageDescriptionName>
               <ColorImageDescriptionBonus>
                 + ${selectedColor.price}
-                </ColorImageDescriptionBonus>
+              </ColorImageDescriptionBonus>
             </ColorImageDescription>
           </ColorImageWrapper>
           <ColorTitleWrapper>
@@ -200,12 +200,12 @@ class Color extends Component {
             </ColorTitle>
             <ColorDescription>
               {color.description}
-              </ColorDescription>
-          </ ColorTitleWrapper>
+            </ColorDescription>
+          </ColorTitleWrapper>
           <ColorChoices>
             {
               items.map(item => (
-                <ColorChoice onClick={() => this.changeColor(item)} active={this.state.colorActived === item.id} key={item.id}>
+                <ColorChoice onClick={() => this.changeColor(item)} active={colorActived === item.id} key={item.id}>
                   <img src={getDot(item.id)} alt={item.label} />
                 </ColorChoice>
               ))
@@ -215,7 +215,6 @@ class Color extends Component {
       </StyledColor>
     );
   }
-};
-
+}
 
 export default Color;
