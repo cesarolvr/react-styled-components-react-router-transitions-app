@@ -99,7 +99,7 @@ npm run build
 Todas as outras tecnologias envolvidas podem ser vistas [aqui](https://github.com/cesarolvr/cars-ventures/blob/master/package.json)
 
 
-## Cesar Oliveira
+## Cesar Oliveira Faber
 
  - [Github](https://github.com/cesarolvr)
  - [Facebook](https://facebook.com/cesarolvra)
