@@ -7,7 +7,8 @@
   O Model R promete ser um lançamento revolucionário no mercado automobilistico universal. 
   
   E essa é a página oficial do Carro. Aqui você pode escolher o motor, as cores e as rodas do seu Model R.
- <br />
+  
+  
   
  <code>Para acessar online, esse é o <a href="https://carsventures-ovqzyptlpr.now.sh/" target="_blank">link</a></code>
 </div>
