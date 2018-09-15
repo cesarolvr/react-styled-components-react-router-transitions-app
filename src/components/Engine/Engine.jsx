@@ -82,7 +82,7 @@ const ItemInfo = styled.h4`
   font-size: 1.3rem;
   letter-spacing: .1em;
   transition: color .2s ease;
-  color: ${props => props.tertiaryGray };
+  color: ${props => props.tertiaryGray};
   span{
     font-weight: 500;
     color: ${props => props.theme.primaryBlue};
@@ -135,15 +135,15 @@ const ListItem = styled.li`
     }
   }
   ${ItemCheck}{
-    background: ${props => props.selected ? props.theme.primaryRed : 'white'};
+    background: ${props => (props.selected ? props.theme.primaryRed : 'white')};
   }
   ${ItemInfo} {
-    color: ${props => props.selected ? props.theme.tertiaryGray : props.theme.primaryGray};
+    color: ${props => (props.selected ? props.theme.tertiaryGray : props.theme.primaryGray)};
     span{
-      color: ${props => props.selected ? props.theme.primaryBlue : props.theme.primaryGray};
+      color: ${props => (props.selected ? props.theme.primaryBlue : props.theme.primaryGray)};
     }
     b{
-      color: ${props => props.selected ? props.theme.primaryRed : props.theme.primaryGray};
+      color: ${props => (props.selected ? props.theme.primaryRed : props.theme.primaryGray)};
     }
   }
   @media (max-width: ${props => props.theme.breakLg}px) {
@@ -160,21 +160,21 @@ class Engine extends React.Component {
     engineActived: 1,
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const engine = idx(this.props, _ => _.selected.engine) || {};
     this.setState({
-      engineActived: engine.id
-    })
+      engineActived: engine.id,
+    });
   }
 
-  changeEngine = item => {
+  changeEngine = (item) => {
     const {
       setEngine
     } = this.props;
 
     this.setState({
-      engineActived: item.id
-    })
+      engineActived: item.id,
+    });
 
     setEngine(item);
   }
@@ -182,35 +182,38 @@ class Engine extends React.Component {
   render() {
     const items = idx(this.props, _ => _.engine.items) || [];
     const engine = idx(this.props, _ => _.selected.engine) || {};
-  
+
+    const {
+      engineActived,
+    } = this.state;
     return (
       <StyledEngine>
         <EngineContainer>
-            <EngineImage src={getEngine(engine.id)} alt="Engine`s image of the car"/>
-            <EngineTitle>Engine</EngineTitle>
-            <EngineList>
-              {
-                items.map((item, index) => (
-                  <ListItem onClick={() => this.changeEngine(item)} selected={this.state.engineActived === item.id} key={item.id}>
-                    <ItemInfoFeatured>
-                      <span>{item.kwh}</span>
-                      <b>{item.type}</b>
-                    </ItemInfoFeatured>
-                    <ItemInfo>
-                      <span>{item.kwh}</span> kWh
-                    </ItemInfo>
-                    <ItemInfo>
-                      <span>{item.range}</span> miles range
-                    </ItemInfo>
-                    <ItemCheck />
-                  </ListItem>
-                ))
-              }
-            </EngineList>
+          <EngineImage src={getEngine(engine.id)} alt="Engine`s image of the car"/>
+          <EngineTitle>Engine</EngineTitle>
+          <EngineList>
+            {
+              items.map(item => (
+                <ListItem onClick={() => this.changeEngine(item)} selected={engineActived === item.id} key={item.id}>
+                  <ItemInfoFeatured>
+                    <span>{item.kwh}</span>
+                    <b>{item.type}</b>
+                  </ItemInfoFeatured>
+                  <ItemInfo>
+                    <span>{item.kwh}</span> kWh
+                  </ItemInfo>
+                  <ItemInfo>
+                    <span>{item.range}</span> miles range
+                  </ItemInfo>
+                  <ItemCheck />
+                </ListItem>
+              ))
+            }
+          </EngineList>
         </EngineContainer>
       </StyledEngine>
     );
   }
-};
+}
 
 export default Engine;

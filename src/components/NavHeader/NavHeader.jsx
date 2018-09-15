@@ -31,20 +31,18 @@ const StyledItem = styled.li`
   }
 `;
 
-const NavHeader = () => {
-  return (
-    <StyledList>
-      <StyledItem active>
-        <Link title="Model R" to="/">
-          Model R
-        </Link>
-      </StyledItem>
-      <StyledItem>Model IQ</StyledItem>
-      <StyledItem>Model Mobi</StyledItem>
-      <StyledItem>Model Charlie</StyledItem>
-      <StyledItem>Model Italy</StyledItem>
-    </StyledList>
-  );
-};
+const NavHeader = () => (
+  <StyledList>
+    <StyledItem active>
+      <Link title="Model R" to="/">
+        Model R
+      </Link>
+    </StyledItem>
+    <StyledItem>Model IQ</StyledItem>
+    <StyledItem>Model Mobi</StyledItem>
+    <StyledItem>Model Charlie</StyledItem>
+    <StyledItem>Model Italy</StyledItem>
+  </StyledList>
+);
 
 export default NavHeader;
