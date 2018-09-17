@@ -18,7 +18,7 @@
 
 ## Documentação
 
-Todo o processo de planejamento e desenvolvimento do projeto foi documentado e está disponível para conferir [aqui](https://trello.com/b/kX8ZzF0Y/cars-ventures).
+Todo o processo de planejamento e desenvolvimento do projeto foi documentado e está disponível para conferir aqui.
 
 E todas as justificações e explicações técnicas podem ser conferidas e debatidas aqui :)
 
