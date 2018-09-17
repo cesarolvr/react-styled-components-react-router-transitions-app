@@ -189,7 +189,11 @@ class App extends Component {
             <Route path="/building" render={() => <Building />} />
           </AnimatedSwitch>
         </Content>
-        <Bar status={getStateBar(location)} next={getLinkNext(pathname)} selected={selectedOptions} />
+        <Bar
+          status={getStateBar(location)}
+          next={getLinkNext(pathname)}
+          selected={selectedOptions}
+        />
       </AppWrapper>
     );
   }
